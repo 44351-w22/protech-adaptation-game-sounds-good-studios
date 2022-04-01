@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://EscapeTheMaze_Minigame1/HedgePlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://EscapeTheMaze_Minigame1/Maze.tscn" type="PackedScene" id=2]
+
+[node name="FindTheKey" type="Node"]
+
+[node name="HedgePlayer" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.0721938, 0, -0.997391, 0, 1, 0, 0.997391, 0, 0.0721938, -9.65804, 1.2257, -3.29012 )
+
+[node name="Maze" parent="." instance=ExtResource( 2 )]
