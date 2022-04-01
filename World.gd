@@ -14,11 +14,17 @@ func move_camera(p):
 
 
 func _on_Player1_Collision():
-	var playerX = $Player1/CollisionShape2D.global_position.x
-	var playerY = $Player1/CollisionShape2D.global_position.y
 	var tile_coord = $TileMap.world_to_map($Player1.global_position)
 	var tile_index = $TileMap.get_cellv(tile_coord)
 	var tile = $TileMap.tile_set.tile_get_name(tile_index)
-	print(tile)
-	#var tile_name = $TileMap.tile_set.tile_get_name(tile_id)
-	#print(tile_name)
+	
+	if tile == "Light Gray Brick Floor.png 0":
+		print("gray")
+	elif tile == "Pale Blue Brick Floor.png 1":
+		print("blue")
+	elif tile == "Purple Brick Floor.png 2":
+		print("purple")
+	elif tile == "Red Brick Floor.png 3":
+		print("red")
+	elif tile == "Yellow Brick Floor.png 4":
+		print("yellow")
