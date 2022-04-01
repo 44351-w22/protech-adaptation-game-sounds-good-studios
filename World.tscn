@@ -32,3 +32,5 @@ tile_data = PoolIntArray( 327675, 0, 0, 327678, 0, 0, 262145, 0, 0, 262148, 0, 0
 
 [node name="GameCam" type="Camera2D" parent="."]
 current = true
+
+[connection signal="Collision" from="Player1" to="." method="_on_Player1_Collision"]
