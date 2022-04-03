@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "KinematicBody",
 "class": "HedgePlayer",
 "language": "GDScript",
-"path": "res://EscapeTheMaze_Minigame1/PlayerA.gd"
+"path": "res://FindTheKey_Minigame1/PlayerA.gd"
 } ]
 _global_script_class_icons={
 "HedgePlayer": ""
