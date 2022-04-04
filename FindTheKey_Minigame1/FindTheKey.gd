@@ -16,6 +16,11 @@ onready var countdown = $Countdown
 onready var timer = $Countdown/Timer
 onready var lose = $Countdown/Defeat
 onready var win = $Countdown/Victory
+onready var goal1 = $Maze/Goal/CollisionShape
+onready var goal2 = $Maze2/Goal/CollisionShape
+onready var goal3 = $Maze3/Goal/CollisionShape
+onready var goal4 = $Maze4/Goal/CollisionShape
+onready var goal5 = $Maze5/Goal/CollisionShape
 
 func _ready():
 	rng.randomize()
@@ -72,4 +77,9 @@ func _on_Maze5_playerWins():
 func _on_Countdown_countdown_over():
 	print("YOU LOSE!!!")
 	lose.visible = true
+	goal1.disabled = true
+	goal2.disabled = true
+	goal3.disabled = true
+	goal4.disabled = true
+	goal5.disabled = true
 	emit_signal("defeat")
