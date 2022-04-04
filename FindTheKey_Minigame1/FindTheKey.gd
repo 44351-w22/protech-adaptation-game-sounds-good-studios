@@ -12,6 +12,10 @@ signal defeat
 var rng = RandomNumberGenerator.new()
 var startingMaze = 0
 onready var player = $HedgePlayer
+onready var countdown = $Countdown
+onready var timer = $Countdown/Timer
+onready var lose = $Countdown/Defeat
+onready var win = $Countdown/Victory
 
 func _ready():
 	rng.randomize()
@@ -32,24 +36,40 @@ func _ready():
 
 func _on_Maze_playerWins():
 	print("YOU WIN!!!")
+	timer.stop()
+	win.visible = true
 	emit_signal("victory")
 
 
 func _on_Maze2_playerWins():
 	print("YOU WIN!!!")
+	timer.stop()
+	win.visible = true
 	emit_signal("victory")
 
 
 func _on_Maze3_playerWins():
 	print("YOU WIN!!!")
+	timer.stop()
+	win.visible = true
 	emit_signal("victory")
 
 
 func _on_Maze4_playerWins():
 	print("YOU WIN!!!")
+	timer.stop()
+	win.visible = true
 	emit_signal("victory")
 
 
 func _on_Maze5_playerWins():
 	print("YOU WIN!!!")
+	timer.stop()
+	win.visible = true
 	emit_signal("victory")
+
+
+func _on_Countdown_countdown_over():
+	print("YOU LOSE!!!")
+	lose.visible = true
+	emit_signal("defeat")

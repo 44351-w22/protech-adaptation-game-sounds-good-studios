@@ -5,7 +5,7 @@
 [ext_resource path="res://FindTheKey_Minigame1/Maze2.gd" type="Script" id=3]
 
 [sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.203922, 0.121569, 0, 1 )
+albedo_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="QuadMesh" id=1]
 material = SubResource( 2 )

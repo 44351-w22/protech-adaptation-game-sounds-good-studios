@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://FindTheKey_Minigame1/Countdown.gd" type="Script" id=1]
+[ext_resource path="res://assets/BLOODY.TTF" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 46
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 46
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 46
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 100
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="Countdown" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+minutes = 3
+
+[node name="Min" type="RichTextLabel" parent="."]
+margin_left = 15.0
+margin_top = 17.0
+margin_right = 80.0
+margin_bottom = 71.0
+custom_colors/default_color = Color( 1, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+tab_size = 9
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sec" type="RichTextLabel" parent="."]
+margin_left = 101.0
+margin_top = 18.0
+margin_right = 171.0
+margin_bottom = 70.0
+custom_colors/default_color = Color( 1, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+text = "00"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.1
+autostart = true
+
+[node name="colon" type="Label" parent="."]
+margin_left = 79.0
+margin_top = 19.0
+margin_right = 119.0
+margin_bottom = 70.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = ":"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Victory" type="Label" parent="."]
+visible = false
+margin_left = 411.0
+margin_top = 274.0
+margin_right = 824.0
+margin_bottom = 384.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "YOU WIN!!!"
+
+[node name="Defeat" type="Label" parent="."]
+visible = false
+margin_left = 411.0
+margin_top = 274.0
+margin_right = 824.0
+margin_bottom = 384.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "YOU LOSE!!!"
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
