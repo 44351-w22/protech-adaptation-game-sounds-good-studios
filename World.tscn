@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DoorTileMap.tscn" type="PackedScene" id=2]
@@ -9,6 +9,12 @@
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
+
+[sub_resource type="InputEventAction" id=2]
+action = "end_turn"
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
 
 [node name="World" type="Node"]
 script = ExtResource( 4 )
@@ -43,14 +49,17 @@ current = true
 [node name="Dice_Roller" parent="CanvasLayer" instance=ExtResource( 5 )]
 
 [node name="EndTurn" type="Button" parent="CanvasLayer"]
-margin_right = 12.0
-margin_bottom = 20.0
+margin_left = 17.0
+margin_top = 19.0
+margin_right = 93.0
+margin_bottom = 44.0
 custom_colors/font_color_disabled = Color( 1, 0, 0, 1 )
 custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+shortcut = SubResource( 3 )
 text = "End Turn"
 __meta__ = {
 "_edit_use_anchors_": false
