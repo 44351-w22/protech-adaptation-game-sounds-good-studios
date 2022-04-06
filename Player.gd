@@ -15,18 +15,21 @@ signal Collision
 var start_Position_x = 608
 var start_Position_y = 96
 
+export var movesLeft = 0
+
 func _ready():
 	position.x = start_Position_x
 	position.y = start_Position_y
 
 func move(dir):
-	rayDown.cast_to = inputs[dir] * tile_size
-	rayDown.force_raycast_update()
-	if !rayDown.is_colliding():
-		move_tween(dir)
-		
-	#if $CollisionShape2D.position.x != start_Position_x or $CollisionShape2D.position.y != start_Position_y:
-		#emit_signal("Collision")
+	if movesLeft > 0:
+		rayDown.cast_to = inputs[dir] * tile_size
+		rayDown.force_raycast_update()
+		if !rayDown.is_colliding():
+			move_tween(dir)
+			movesLeft -= 1
+		#if $CollisionShape2D.position.x != start_Position_x or $CollisionShape2D.position.y != start_Position_y:
+			#emit_signal("Collision")
 		
 		
 func move_tween(dir):
@@ -39,10 +42,8 @@ func _unhandled_input(event):
 	for dir in inputs.keys():
 		if event.is_action_pressed(dir):
 			move(dir)
-			
+				
 
 func _process(delta):
 	if $CollisionShape2D.position.x != start_Position_x or $CollisionShape2D.position.y != start_Position_y:
 		emit_signal("Collision")
-
-
