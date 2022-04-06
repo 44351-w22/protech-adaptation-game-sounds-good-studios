@@ -28,15 +28,19 @@ scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 
 [node name="DiceB" type="Sprite" parent="."]
-position = Vector2( 763, 296 )
+position = Vector2( 756, 296 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 554.0
-margin_top = 415.0
-margin_right = 751.0
-margin_bottom = 479.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -248.0
+margin_right = 97.0
+margin_bottom = -184.0
 custom_colors/font_color_disabled = Color( 1, 0, 0, 1 )
 custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
