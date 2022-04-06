@@ -2,6 +2,8 @@ extends Node
 
 onready var cam = $GameCam
 onready var p1 = $Player1
+onready var dice = $CanvasLayer/Dice_Roller
+onready var totalDiceRoll = dice.totalRoll
 
 
 func _ready():
@@ -10,8 +12,6 @@ func _ready():
 func move_camera(p):
 	cam.get_parent().remove_child(cam)
 	p.add_child(cam)
-
-
 
 func _on_Player1_Collision():
 	var tile_coord = $TileMap.world_to_map($Player1.global_position)
@@ -28,3 +28,7 @@ func _on_Player1_Collision():
 		print("red")
 	elif tile == "Yellow Brick Floor.png 4":
 		print("yellow")
+
+func playerTurn():
+	dice.visible = true
+	

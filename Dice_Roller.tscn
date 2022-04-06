@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Dice_Roller.gd" type="Script" id=1]
+[ext_resource path="res://assets/dice/dieWhite1.png" type="Texture" id=2]
+[ext_resource path="res://assets/BLOODY.TTF" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 52
+font_data = ExtResource( 3 )
+
+[node name="Dice_Roller" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiceA" type="Sprite" parent="."]
+position = Vector2( 422, 300 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+
+[node name="DiceB" type="Sprite" parent="."]
+position = Vector2( 850, 300 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 538.0
+margin_top = 269.0
+margin_right = 735.0
+margin_bottom = 333.0
+custom_colors/font_color_disabled = Color( 1, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "ROLL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
