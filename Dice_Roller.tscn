@@ -23,20 +23,20 @@ __meta__ = {
 }
 
 [node name="DiceA" type="Sprite" parent="."]
-position = Vector2( 422, 300 )
+position = Vector2( 530, 297 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 
 [node name="DiceB" type="Sprite" parent="."]
-position = Vector2( 850, 300 )
+position = Vector2( 763, 296 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 538.0
-margin_top = 269.0
-margin_right = 735.0
-margin_bottom = 333.0
+margin_left = 554.0
+margin_top = 415.0
+margin_right = 751.0
+margin_bottom = 479.0
 custom_colors/font_color_disabled = Color( 1, 0, 0, 1 )
 custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )

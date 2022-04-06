@@ -2,12 +2,24 @@ extends Node
 
 onready var cam = $GameCam
 onready var p1 = $Player1
+onready var p2 = $Player2
+onready var p1Sprite = $Player1/Sprite
+onready var p2Sprite = $Player2/Sprite
 onready var dice = $CanvasLayer/Dice_Roller
 onready var totalDiceRoll = dice.totalRoll
 onready var currentPlayer = p1
-onready var nextPlayer = p1
+onready var nextPlayer = p2
+
+var skins = [preload("res://assets/players/pieceGreen_single00.png"), 
+			preload("res://assets/players/piecePurple_single01.png"), 
+			preload("res://assets/players/pieceBlue_single18.png"),
+			preload("res://assets/players/pieceRed_single01.png"),
+			preload("res://assets/players/pieceWhite_single00.png"),
+			preload("res://assets/players/pieceYellow_single00.png")]
 
 func _ready():
+	p1Sprite.texture = skins[0]
+	p2Sprite.texture = skins[1]
 	move_camera(p1)
 
 func move_camera(p):
@@ -41,6 +53,11 @@ func _on_Button_pressed():
 
 func _on_EndTurn_pressed():
 	currentPlayer = nextPlayer
-	nextPlayer = currentPlayer
+	if currentPlayer == p1:
+		nextPlayer = p2
+	elif currentPlayer == p2:
+		nextPlayer = p1
+	else:
+		print("error")
 	move_camera(currentPlayer)
 	player_turn()
