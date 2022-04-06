@@ -37,6 +37,5 @@ current = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Dice_Roller" parent="CanvasLayer" instance=ExtResource( 5 )]
-visible = false
 
 [connection signal="Collision" from="Player1" to="." method="_on_Player1_Collision"]

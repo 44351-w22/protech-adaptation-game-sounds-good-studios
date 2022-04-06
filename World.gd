@@ -29,6 +29,3 @@ func _on_Player1_Collision():
 	elif tile == "Yellow Brick Floor.png 4":
 		print("yellow")
 
-func playerTurn():
-	dice.visible = true
-	
