@@ -21,6 +21,7 @@ var skins = [preload("res://assets/players/pieceGreen_single00.png"),
 			preload("res://assets/players/pieceWhite_single00.png"),
 			preload("res://assets/players/pieceYellow_single00.png")]
 
+
 func _ready():
 	p1Sprite.texture = skins[0]
 	p2Sprite.texture = skins[1]
@@ -32,7 +33,13 @@ func move_camera(p):
 	cam.get_parent().remove_child(cam)
 	p.add_child(cam)
 
+
 func _on_Player1_Collision():
+	yield(get_tree().create_timer(1.0), "timeout")
+	call_deferred("detect")
+
+func detect():
+	print($Player1.global_position)
 	var tile_coord = $TileMap.world_to_map($Player1.global_position)
 	var tile_index = $TileMap.get_cellv(tile_coord)
 	var tile = $TileMap.tile_set.tile_get_name(tile_index)
