@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Evil_Laugh_Male_6-Himan-1359990674.wav-828f765ea5b20d9c60ba0d0f512f52b4.sample"
+
+[deps]
+
+source_file="res://assets/Evil_Laugh_Male_6-Himan-1359990674.wav"
+dest_files=[ "res://.import/Evil_Laugh_Male_6-Himan-1359990674.wav-828f765ea5b20d9c60ba0d0f512f52b4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
