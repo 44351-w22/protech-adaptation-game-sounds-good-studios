@@ -11,8 +11,8 @@ onready var p3Sprite = $Player3/Sprite
 onready var p4Sprite = $Player4/Sprite
 onready var dice = $CanvasLayer/Dice_Roller
 onready var totalDiceRoll = dice.totalRoll
-onready var currentPlayer = p1
-onready var nextPlayer = p2
+onready var currentPlayer = Global.current_player
+onready var nextPlayer = Global.next_player
 
 onready var packed_scene = PackedScene.new()
 
@@ -29,6 +29,8 @@ func _ready():
 	p2Sprite.texture = skins[1]
 	p3Sprite.texture = skins[2]
 	p4Sprite.texture = skins[4]
+	currentPlayer = p1
+	nextPlayer = p2
 	move_camera(p1)
 	
 
@@ -63,6 +65,9 @@ func detect():
 
 func player_turn():
 	dice.visible = true
+	if(Global.current_player_key == true):
+		currentPlayer.key = true
+		Global.current_player_key = false
 
 func _on_Button_pressed():
 	yield(get_tree().create_timer(2.0), "timeout")
