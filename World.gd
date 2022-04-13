@@ -39,8 +39,8 @@ func _on_Player1_Collision():
 	call_deferred("detect")
 
 func detect():
-	print($Player1.global_position)
-	var tile_coord = $TileMap.world_to_map($Player1.global_position)
+	print(currentPlayer.global_position)
+	var tile_coord = $TileMap.world_to_map(currentPlayer.global_position)
 	var tile_index = $TileMap.get_cellv(tile_coord)
 	var tile = $TileMap.tile_set.tile_get_name(tile_index)
 	
@@ -53,7 +53,25 @@ func detect():
 	elif tile == "Red Brick Floor.png 3":
 		print("red")
 	elif tile == "Yellow Brick Floor.png 4":
-		print("yellow")
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var my_random_number = rng.randi_range(0, 5)
+		print(my_random_number)
+		if (my_random_number == 0):
+			Global.goto_scene("res://FindTheKey_Minigame1/Maze.tscn")
+		
+		if (my_random_number == 1):
+			Global.goto_scene("res://FindTheKey_Minigame1/Maze2.tscn")
+			
+		if (my_random_number == 2):
+			Global.goto_scene(("res://FindTheKey_Minigame1/Maze3.tscn"))
+		
+		if (my_random_number == 3):
+			Global.goto_scene("res://FindTheKey_Minigame1/Maze4.tscn")
+			
+		if (my_random_number == 4):
+			Global.goto_scene("res://FindTheKey_Minigame1/Maze5.tscn")
+		
 
 func player_turn():
 	dice.visible = true
