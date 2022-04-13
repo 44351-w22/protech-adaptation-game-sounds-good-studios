@@ -14,6 +14,8 @@ onready var totalDiceRoll = dice.totalRoll
 onready var currentPlayer = p1
 onready var nextPlayer = p2
 
+onready var packed_scene = PackedScene.new()
+
 var skins = [preload("res://assets/players/pieceGreen_single00.png"), 
 			preload("res://assets/players/piecePurple_single01.png"), 
 			preload("res://assets/players/pieceBlue_single18.png"),
@@ -28,6 +30,7 @@ func _ready():
 	p3Sprite.texture = skins[2]
 	p4Sprite.texture = skins[4]
 	move_camera(p1)
+	
 
 func move_camera(p):
 	cam.get_parent().remove_child(cam)
@@ -53,24 +56,9 @@ func detect():
 	elif tile == "Red Brick Floor.png 3":
 		print("red")
 	elif tile == "Yellow Brick Floor.png 4":
-		var rng = RandomNumberGenerator.new()
-		rng.randomize()
-		var my_random_number = rng.randi_range(0, 5)
-		print(my_random_number)
-		if (my_random_number == 0):
-			Global.goto_scene("res://FindTheKey_Minigame1/Maze.tscn")
-		
-		if (my_random_number == 1):
-			Global.goto_scene("res://FindTheKey_Minigame1/Maze2.tscn")
-			
-		if (my_random_number == 2):
-			Global.goto_scene(("res://FindTheKey_Minigame1/Maze3.tscn"))
-		
-		if (my_random_number == 3):
-			Global.goto_scene("res://FindTheKey_Minigame1/Maze4.tscn")
-			
-		if (my_random_number == 4):
-			Global.goto_scene("res://FindTheKey_Minigame1/Maze5.tscn")
+		packed_scene.pack(get_tree().get_current_scene())
+		ResourceSaver.save("res://World.tscn", packed_scene)
+		Global.goto_scene("res://FindTheKey_Minigame1/FindTheKey.tscn")
 		
 
 func player_turn():

@@ -51,6 +51,7 @@ func _on_Maze_playerWins():
 	$Victory.play()
 	goal1.disabled = true
 	emit_signal("victory")
+	Global.goto_scene("res://World.tscn")
 
 
 func _on_Maze2_playerWins():
@@ -60,6 +61,7 @@ func _on_Maze2_playerWins():
 	$Victory.play()
 	goal2.disabled = true
 	emit_signal("victory")
+	Global.goto_scene("res://World.tscn")
 
 
 func _on_Maze3_playerWins():
@@ -69,6 +71,7 @@ func _on_Maze3_playerWins():
 	$Victory.play()
 	goal3.disabled = true
 	emit_signal("victory")
+	Global.goto_scene("res://World.tscn")
 
 
 func _on_Maze4_playerWins():
@@ -78,6 +81,7 @@ func _on_Maze4_playerWins():
 	$Victory.play()
 	goal4.disabled = true
 	emit_signal("victory")
+	Global.goto_scene("res://World.tscn")
 
 
 func _on_Maze5_playerWins():
@@ -87,6 +91,7 @@ func _on_Maze5_playerWins():
 	$Victory.play()
 	goal5.disabled = true
 	emit_signal("victory")
+	Global.goto_scene("res://World.tscn")
 
 
 func _on_Countdown_countdown_over():
@@ -99,6 +104,7 @@ func _on_Countdown_countdown_over():
 	goal5.disabled = true
 	$Defeat.play()
 	emit_signal("defeat")
+	Global.goto_scene("res://World.tscn")
 
 func _on_Resume_pressed():
 	$Pause.hide()
