@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://FindTheKey_Minigame1/HedgePlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://FindTheKey_Minigame1/Maze.tscn" type="PackedScene" id=2]
@@ -11,6 +11,21 @@
 [ext_resource path="res://assets/horror-atmosphere-background.mp3" type="AudioStream" id=9]
 [ext_resource path="res://assets/Children Yay! Sound Effect.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/Evil_Laugh_Male_6-Himan-1359990674.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/BLOODY.TTF" type="DynamicFontData" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 128
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 12 )
+
+[sub_resource type="InputEventAction" id=3]
+action = "ui_select"
+
+[sub_resource type="ShortCut" id=4]
+shortcut = SubResource( 3 )
 
 [node name="FindTheKey" type="Node"]
 script = ExtResource( 3 )
@@ -69,12 +84,61 @@ stream = ExtResource( 10 )
 [node name="Defeat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 
+[node name="Pause" type="Popup" parent="."]
+pause_mode = 2
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0, 0, 0.580392 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -359.0
+margin_top = -184.0
+margin_right = 369.0
+margin_bottom = -43.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "GAME PAUSED"
+
+[node name="Resume" type="Button" parent="Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -104.0
+margin_top = 60.0
+margin_right = 105.0
+margin_bottom = 137.0
+custom_colors/font_color_disabled = Color( 1, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+shortcut = SubResource( 4 )
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="playerWins" from="Maze" to="." method="_on_Maze_playerWins"]
 [connection signal="playerWins" from="Maze2" to="." method="_on_Maze2_playerWins"]
 [connection signal="playerWins" from="Maze3" to="." method="_on_Maze3_playerWins"]
 [connection signal="playerWins" from="Maze4" to="." method="_on_Maze4_playerWins"]
 [connection signal="playerWins" from="Maze5" to="." method="_on_Maze5_playerWins"]
 [connection signal="countdown_over" from="Countdown" to="." method="_on_Countdown_countdown_over"]
+[connection signal="pressed" from="Pause/Resume" to="." method="_on_Resume_pressed"]
 
 [editable path="Maze"]
 [editable path="Maze2"]
