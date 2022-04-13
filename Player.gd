@@ -3,9 +3,8 @@ extends KinematicBody2D
 const speed = 3
 const tile_size = 64
 onready var rayDown = $Down
-onready var rayLeft = $Left
-onready var rayRight = $Right
-onready var rayUp = $Up
+
+
 onready var tween = $Tween
 var inputs = {"ui_right": Vector2.RIGHT,
 "ui_left": Vector2.LEFT,
@@ -21,6 +20,7 @@ func _ready():
 	position.x = start_Position_x
 	position.y = start_Position_y
 
+
 func move(dir):
 	if movesLeft > 0:
 		rayDown.cast_to = inputs[dir] * tile_size
@@ -28,6 +28,8 @@ func move(dir):
 		if !rayDown.is_colliding():
 			move_tween(dir)
 			movesLeft -= 1
+		if movesLeft == 0:
+			emit_signal("Collision")
 		#if $CollisionShape2D.position.x != start_Position_x or $CollisionShape2D.position.y != start_Position_y:
 			#emit_signal("Collision")
 		
@@ -43,7 +45,4 @@ func _unhandled_input(event):
 		if event.is_action_pressed(dir):
 			move(dir)
 				
-
-func _process(delta):
-	if $CollisionShape2D.position.x != start_Position_x or $CollisionShape2D.position.y != start_Position_y:
-		emit_signal("Collision")
+			

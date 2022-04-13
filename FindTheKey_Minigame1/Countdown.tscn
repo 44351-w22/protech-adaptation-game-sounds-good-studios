@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://FindTheKey_Minigame1/Countdown.gd" type="Script" id=1]
 [ext_resource path="res://assets/BLOODY.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/Perc_MusicStand_lo.wav" type="AudioStream" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 46
@@ -90,5 +91,9 @@ margin_bottom = 384.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
 text = "YOU LOSE!!!"
+
+[node name="Clock_Tick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 10.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

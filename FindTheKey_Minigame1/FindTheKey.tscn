@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://FindTheKey_Minigame1/HedgePlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://FindTheKey_Minigame1/Maze.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://FindTheKey_Minigame1/Maze3.tscn" type="PackedScene" id=6]
 [ext_resource path="res://FindTheKey_Minigame1/Maze4.tscn" type="PackedScene" id=7]
 [ext_resource path="res://FindTheKey_Minigame1/Countdown.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/horror-atmosphere-background.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/Children Yay! Sound Effect.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/Evil_Laugh_Male_6-Himan-1359990674.wav" type="AudioStream" id=11]
 
 [node name="FindTheKey" type="Node"]
 script = ExtResource( 3 )
@@ -55,6 +58,16 @@ data = {
 }
 
 [node name="Countdown" parent="." instance=ExtResource( 8 )]
+
+[node name="AmbientNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+
+[node name="Victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="Defeat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
 
 [connection signal="playerWins" from="Maze" to="." method="_on_Maze_playerWins"]
 [connection signal="playerWins" from="Maze2" to="." method="_on_Maze2_playerWins"]

@@ -30,3 +30,5 @@ func _on_Timer_timeout():
 	if seconds == 0 and minutes == 0:
 		emit_signal("countdown_over")
 		$Timer.stop()
+	if desc == 0:
+		$Clock_Tick.play()

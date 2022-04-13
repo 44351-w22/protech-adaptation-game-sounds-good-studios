@@ -66,6 +66,8 @@ func _on_Maze_playerWins():
 	print("YOU WIN!!!")
 	timer.stop()
 	win.visible = true
+	$Victory.play()
+	goal1.disabled = true
 	emit_signal("victory")
 
 
@@ -73,6 +75,8 @@ func _on_Maze2_playerWins():
 	print("YOU WIN!!!")
 	timer.stop()
 	win.visible = true
+	$Victory.play()
+	goal2.disabled = true
 	emit_signal("victory")
 
 
@@ -80,6 +84,8 @@ func _on_Maze3_playerWins():
 	print("YOU WIN!!!")
 	timer.stop()
 	win.visible = true
+	$Victory.play()
+	goal3.disabled = true
 	emit_signal("victory")
 
 
@@ -87,6 +93,8 @@ func _on_Maze4_playerWins():
 	print("YOU WIN!!!")
 	timer.stop()
 	win.visible = true
+	$Victory.play()
+	goal4.disabled = true
 	emit_signal("victory")
 
 
@@ -94,6 +102,8 @@ func _on_Maze5_playerWins():
 	print("YOU WIN!!!")
 	timer.stop()
 	win.visible = true
+	$Victory.play()
+	goal5.disabled = true
 	emit_signal("victory")
 
 
@@ -105,4 +115,5 @@ func _on_Countdown_countdown_over():
 	goal3.disabled = true
 	goal4.disabled = true
 	goal5.disabled = true
+	$Defeat.play()
 	emit_signal("defeat")
