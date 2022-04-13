@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://FindTheKey_Minigame1/HedgePlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://FindTheKey_Minigame1/Maze.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://FindTheKey_Minigame1/Maze3.tscn" type="PackedScene" id=6]
 [ext_resource path="res://FindTheKey_Minigame1/Maze4.tscn" type="PackedScene" id=7]
 [ext_resource path="res://FindTheKey_Minigame1/Countdown.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Pause.tscn" type="PackedScene" id=9]
 
 [node name="FindTheKey" type="Node"]
 script = ExtResource( 3 )
@@ -57,15 +56,12 @@ data = {
 
 [node name="Countdown" parent="." instance=ExtResource( 8 )]
 
-[node name="Pause" parent="." instance=ExtResource( 9 )]
-
 [connection signal="playerWins" from="Maze" to="." method="_on_Maze_playerWins"]
 [connection signal="playerWins" from="Maze2" to="." method="_on_Maze2_playerWins"]
 [connection signal="playerWins" from="Maze3" to="." method="_on_Maze3_playerWins"]
 [connection signal="playerWins" from="Maze4" to="." method="_on_Maze4_playerWins"]
 [connection signal="playerWins" from="Maze5" to="." method="_on_Maze5_playerWins"]
 [connection signal="countdown_over" from="Countdown" to="." method="_on_Countdown_countdown_over"]
-[connection signal="pressed" from="Pause/Pause_Button" to="." method="_on_Pause_Button_pressed"]
 
 [editable path="Maze"]
 [editable path="Maze2"]
@@ -73,4 +69,3 @@ data = {
 [editable path="Maze4"]
 [editable path="Maze5"]
 [editable path="Countdown"]
-[editable path="Pause"]
