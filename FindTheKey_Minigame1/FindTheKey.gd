@@ -37,30 +37,12 @@ func _ready():
 		player.translation = Vector3(-204, 1, 0)
 	else:
 		print("error with random number generation")
-"""
-func _input(event):
-	if event.is_action_pressed("reset"):
-		reset()
 
-func reset():
-	startingMaze = rng.randi_range(1, 5)
-	if startingMaze == 1:
-		player.translation = Vector3(0, 1, 0)
-	elif startingMaze == 2:
-		player.translation = Vector3(0, 1, -205)
-	elif startingMaze == 3:
-		player.translation = Vector3(0, 1, 203)
-	elif startingMaze == 4:
-		player.translation = Vector3(201, 1, 0)
-	elif startingMaze == 5:
-		player.translation = Vector3(-204, 1, 0)
-	else:
-		print("error with random number generation")
-	countdown.minutes = 3
-	countdown.seconds = 0
-	lose.visible = false
-	win.visible = false
-"""
+
+func _unhandled_input(event):
+	if(event.is_action_pressed("pause")):
+		get_tree().paused = true
+		$Pause.show()
 
 func _on_Maze_playerWins():
 	print("YOU WIN!!!")
@@ -106,3 +88,8 @@ func _on_Countdown_countdown_over():
 	goal4.disabled = true
 	goal5.disabled = true
 	emit_signal("defeat")
+
+
+func _on_Pause_Button_pressed():
+	$Pause.hide()
+	get_tree().paused = false
