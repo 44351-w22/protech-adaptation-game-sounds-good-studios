@@ -3,7 +3,6 @@ extends KinematicBody2D
 const speed = 3
 const tile_size = 64
 onready var rayDown = $Down
-var key = false
 
 
 onready var tween = $Tween
