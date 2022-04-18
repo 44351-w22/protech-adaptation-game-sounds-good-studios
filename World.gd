@@ -11,10 +11,19 @@ onready var p3Sprite = $Player3/Sprite
 onready var p4Sprite = $Player4/Sprite
 onready var dice = $CanvasLayer/Dice_Roller
 onready var totalDiceRoll = dice.totalRoll
+<<<<<<< Updated upstream
 onready var currentPlayer = Global.current_player
 onready var nextPlayer = Global.next_player
 
 onready var packed_scene = PackedScene.new()
+=======
+onready var currentPlayer = p1
+onready var nextPlayer = p2
+onready var p1Position = p1.global_position
+onready var p2Position = p2.global_position
+onready var p3Position = p3.global_position
+onready var p4Position = p4.global_position
+>>>>>>> Stashed changes
 
 var skins = [preload("res://assets/players/pieceGreen_single00.png"), 
 			preload("res://assets/players/piecePurple_single01.png"), 
@@ -32,7 +41,10 @@ func _ready():
 	currentPlayer = p1
 	nextPlayer = p2
 	move_camera(p1)
-	
+	p1.set_position(p1Position)
+	p2.set_position(p2Position)
+	p3.set_position(p3Position)
+	p4.set_position(p4Position)
 
 func move_camera(p):
 	cam.get_parent().remove_child(cam)
@@ -58,8 +70,11 @@ func detect():
 	elif tile == "Red Brick Floor.png 3":
 		print("red")
 	elif tile == "Yellow Brick Floor.png 4":
-		packed_scene.pack(get_tree().get_current_scene())
-		ResourceSaver.save("res://World.tscn", packed_scene)
+		p1Position = p1.global_position
+		p2Position = p2.global_position
+		p3Position = p3.global_position
+		p4Position = p4.global_position
+		
 		Global.goto_scene("res://FindTheKey_Minigame1/FindTheKey.tscn")
 		
 
