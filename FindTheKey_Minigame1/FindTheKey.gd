@@ -68,6 +68,7 @@ func _on_Maze_playerWins():
 	map1.visible = false
 	Global.current_player_key = true
 	emit_signal("victory")
+	yield(get_tree().create_timer(10.0), "timeout")
 	World.show()
 
 
@@ -80,6 +81,7 @@ func _on_Maze2_playerWins():
 	map2.visible = false
 	Global.current_player_key = true
 	emit_signal("victory")
+	yield(get_tree().create_timer(10.0), "timeout")
 	World.show()
 
 
@@ -92,6 +94,7 @@ func _on_Maze3_playerWins():
 	map3.visible = false
 	Global.current_player_key = true
 	emit_signal("victory")
+	yield(get_tree().create_timer(10.0), "timeout")
 	World.show()
 
 
@@ -104,6 +107,7 @@ func _on_Maze4_playerWins():
 	map4.visible = false
 	Global.current_player_key = true
 	emit_signal("victory")
+	yield(get_tree().create_timer(10.0), "timeout")
 	World.show()
 
 
@@ -116,6 +120,7 @@ func _on_Maze5_playerWins():
 	map5.visible = false
 	Global.current_player_key = true
 	emit_signal("victory")
+	yield(get_tree().create_timer(10.0), "timeout")
 	World.show()
 
 
@@ -134,6 +139,7 @@ func _on_Countdown_countdown_over():
 	map5.visible = false
 	$Defeat.play()
 	emit_signal("defeat")
+	yield(get_tree().create_timer(10.0), "timeout")
 	World.show()
 
 func _on_Resume_pressed():
