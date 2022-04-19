@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://FindTheKey_Minigame1/Countdown.gd" type="Script" id=1]
 [ext_resource path="res://assets/BLOODY.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/Perc_MusicStand_lo.wav" type="AudioStream" id=3]
+[ext_resource path="res://FindTheKey_Minigame1/Maze_Keys/Maze1_Key.png" type="Texture" id=4]
+[ext_resource path="res://FindTheKey_Minigame1/Maze_Keys/Maze2_Key.png" type="Texture" id=5]
+[ext_resource path="res://FindTheKey_Minigame1/Maze_Keys/Maze3_Key.png" type="Texture" id=6]
+[ext_resource path="res://FindTheKey_Minigame1/Maze_Keys/Maze5_Key.png" type="Texture" id=7]
+[ext_resource path="res://FindTheKey_Minigame1/Maze_Keys/Maze4_Key.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 46
@@ -71,6 +76,31 @@ text = ":"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Maze" type="Sprite" parent="."]
+visible = false
+position = Vector2( 104, 173 )
+texture = ExtResource( 4 )
+
+[node name="Maze2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 104, 172 )
+texture = ExtResource( 5 )
+
+[node name="Maze3" type="Sprite" parent="."]
+visible = false
+position = Vector2( 101, 172 )
+texture = ExtResource( 6 )
+
+[node name="Maze4" type="Sprite" parent="."]
+visible = false
+position = Vector2( 100, 172 )
+texture = ExtResource( 8 )
+
+[node name="Maze5" type="Sprite" parent="."]
+visible = false
+position = Vector2( 100, 172 )
+texture = ExtResource( 7 )
 
 [node name="Victory" type="Label" parent="."]
 visible = false
