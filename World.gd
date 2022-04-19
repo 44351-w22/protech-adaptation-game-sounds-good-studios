@@ -57,7 +57,8 @@ func detect():
 	var tile = $TileMap.tile_set.tile_get_name(tile_index)
 	
 	if tile == "Light Gray Brick Floor.png 0":
-		print("gray")
+		currentPlayer.position.x = 608
+		currentPlayer.position.y = 96
 	elif tile == "Pale Blue Brick Floor.png 1":
 		map = rng.randi_range(1, 5)
 		if map == 1:
@@ -73,7 +74,11 @@ func detect():
 		else:
 			pass
 	elif tile == "Purple Brick Floor.png 2":
-		print("purple")
+		if currentPlayer.key_found == true:
+			currentPlayer.key_found == false
+		else:
+			currentPlayer.position.x = 608
+			currentPlayer.position.y = 96
 	elif tile == "Red Brick Floor.png 3":
 		print("red")
 	elif tile == "Yellow Brick Floor.png 4":

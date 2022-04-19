@@ -20,6 +20,7 @@ export var map2_found = false
 export var map3_found = false
 export var map4_found = false
 export var map5_found = false
+export var key_found = false
 
 func _ready():
 	position.x = start_Position_x
