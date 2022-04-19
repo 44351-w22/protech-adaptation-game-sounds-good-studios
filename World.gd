@@ -13,6 +13,8 @@ onready var dice = $CanvasLayer/Dice_Roller
 onready var totalDiceRoll = dice.totalRoll
 onready var currentPlayer = Global.current_player
 onready var nextPlayer = Global.next_player
+var rng = RandomNumberGenerator.new()
+var map = 0
 
 onready var packed_scene = PackedScene.new()
 
@@ -57,12 +59,34 @@ func detect():
 	if tile == "Light Gray Brick Floor.png 0":
 		print("gray")
 	elif tile == "Pale Blue Brick Floor.png 1":
-		print("blue")
+		map = rng.randi_range(1, 5)
+		if map == 1:
+			currentPlayer.map1_found = true
+		elif map == 2:
+			currentPlayer.map2_found = true
+		elif map == 3:
+			currentPlayer.map3_found = true
+		elif map == 4:
+			currentPlayer.map4_found = true
+		elif map == 5:
+			currentPlayer.map5_found = true
+		else:
+			pass
 	elif tile == "Purple Brick Floor.png 2":
 		print("purple")
 	elif tile == "Red Brick Floor.png 3":
 		print("red")
 	elif tile == "Yellow Brick Floor.png 4":
+		if(currentPlayer.map1_found == true):
+			Global.map1_found = true
+		elif(currentPlayer.map2_found == true):
+			Global.map2_found = true
+		elif(currentPlayer.map3_found == true):
+			Global.map3_found = true
+		elif(currentPlayer.map4_found == true):
+			Global.map4_found = true
+		elif(currentPlayer.map5_found == true):
+			Global.map5_found = true
 		packed_scene.pack(get_tree().get_current_scene())
 		ResourceSaver.save("res://World.tscn", packed_scene)
 		Global.goto_scene("res://FindTheKey_Minigame1/FindTheKey.tscn")

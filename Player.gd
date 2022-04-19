@@ -15,6 +15,11 @@ var start_Position_x = 608
 var start_Position_y = 96
 
 export var movesLeft = 0
+export var map1_found = false
+export var map2_found = false
+export var map3_found = false
+export var map4_found = false
+export var map5_found = false
 
 func _ready():
 	position.x = start_Position_x
