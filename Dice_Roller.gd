@@ -25,11 +25,13 @@ func rollDice():
 	
 	#randomize dice textures to give illusion of dice rolling
 	for i in 10:
+		$Click.play()
 		diceA.texture = dice[rng.randi_range(0, 5)]
 		diceB.texture = dice[rng.randi_range(0, 5)]
 		yield(get_tree().create_timer(0.1), "timeout")
 	
 	#Set final texture to appropriate dice
+	$Click.play()
 	var dice1index = dice1 - 1
 	var dice2index = dice2 - 1
 	diceA.texture = dice[dice1index]

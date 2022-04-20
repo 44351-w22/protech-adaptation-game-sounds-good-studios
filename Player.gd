@@ -21,6 +21,7 @@ export var map3_found = false
 export var map4_found = false
 export var map5_found = false
 export var key_found = false
+export var totalMapsFound = 0
 
 func _ready():
 	position.x = start_Position_x
@@ -29,6 +30,7 @@ func _ready():
 
 func move(dir):
 	if movesLeft > 0:
+		$MoveSound.play()
 		rayDown.cast_to = inputs[dir] * tile_size
 		rayDown.force_raycast_update()
 		if !rayDown.is_colliding():
