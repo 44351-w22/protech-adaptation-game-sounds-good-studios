@@ -39,6 +39,7 @@ func _ready():
 	Global.map4_found = true
 	Global.map5_found = true
 	move_camera(p1)
+	player_turn()
 	
 
 func move_camera(p):
@@ -59,26 +60,58 @@ func detect():
 	if tile == "Light Gray Brick Floor.png 0":
 		currentPlayer.position.x = 608
 		currentPlayer.position.y = 96
+		$CanvasLayer/Message.text = "Position Reset!!!"
+		$CanvasLayer/Message.show()
+		yield(get_tree().create_timer(3.0), "timeout")
+		$CanvasLayer/Message.hide()
 	elif tile == "Pale Blue Brick Floor.png 1":
 		map = rng.randi_range(1, 5)
 		if map == 1:
 			currentPlayer.map1_found = true
+			$CanvasLayer/Message.text = "Map of Maze 1 Found"
+			$CanvasLayer/Message.show()
+			yield(get_tree().create_timer(3.0), "timeout")
+			$CanvasLayer/Message.hide()
 		elif map == 2:
 			currentPlayer.map2_found = true
+			$CanvasLayer/Message.text = "Map of Maze 2 Found"
+			$CanvasLayer/Message.show()
+			yield(get_tree().create_timer(3.0), "timeout")
+			$CanvasLayer/Message.hide()
 		elif map == 3:
 			currentPlayer.map3_found = true
+			$CanvasLayer/Message.text = "Map of Maze 3 Found"
+			$CanvasLayer/Message.show()
+			yield(get_tree().create_timer(3.0), "timeout")
+			$CanvasLayer/Message.hide()
 		elif map == 4:
 			currentPlayer.map4_found = true
+			$CanvasLayer/Message.text = "Map of Maze 4 Found"
+			$CanvasLayer/Message.show()
+			yield(get_tree().create_timer(3.0), "timeout")
+			$CanvasLayer/Message.hide()
 		elif map == 5:
 			currentPlayer.map5_found = true
+			$CanvasLayer/Message.text = "Map of Maze 5 Found"
+			$CanvasLayer/Message.show()
+			yield(get_tree().create_timer(3.0), "timeout")
+			$CanvasLayer/Message.hide()
 		else:
 			pass
 	elif tile == "Purple Brick Floor.png 2":
 		if currentPlayer.key_found == true:
 			currentPlayer.key_found == false
+			$CanvasLayer/Message.text = "Key Lost"
+			$CanvasLayer/Message.show()
+			yield(get_tree().create_timer(3.0), "timeout")
+			$CanvasLayer/Message.hide()
 		else:
 			currentPlayer.position.x = 608
 			currentPlayer.position.y = 96
+			$CanvasLayer/Message.text = "Position Reset"
+			$CanvasLayer/Message.show()
+			yield(get_tree().create_timer(3.0), "timeout")
+			$CanvasLayer/Message.hide()
 	elif tile == "Red Brick Floor.png 3":
 		print("red")
 	elif tile == "Yellow Brick Floor.png 4":
@@ -92,6 +125,10 @@ func detect():
 			Global.map4_found = true
 		elif(currentPlayer.map5_found == true):
 			Global.map5_found = true
+		$CanvasLayer/Message.text = "Minigame Beginning. \nFIND THE KEY"
+		$CanvasLayer/Message.show()
+		yield(get_tree().create_timer(3.0), "timeout")
+		$CanvasLayer/Message.hide()
 		packed_scene.pack(get_tree().get_current_scene())
 		ResourceSaver.save("res://World.tscn", packed_scene)
 		Global.goto_scene("res://FindTheKey_Minigame1/FindTheKey.tscn")
@@ -107,17 +144,23 @@ func _on_Button_pressed():
 	currentPlayer.movesLeft = totalDiceRoll
 
 func _on_EndTurn_pressed():
-	currentPlayer.movesLeft = 0
-	currentPlayer = nextPlayer
-	if currentPlayer == p1:
-		nextPlayer = p2
-	elif currentPlayer == p2:
-		nextPlayer = p3
-	elif currentPlayer == p3:
-		nextPlayer = p4
-	elif currentPlayer == p4:
-		nextPlayer = p1
+	if currentPlayer.movesLeft == 0:
+		currentPlayer = nextPlayer
+		if currentPlayer == p1:
+			nextPlayer = p2
+		elif currentPlayer == p2:
+			nextPlayer = p3
+		elif currentPlayer == p3:
+			nextPlayer = p4
+		elif currentPlayer == p4:
+			nextPlayer = p1
+		else:
+			print("error")
+		move_camera(currentPlayer)
+		player_turn()
 	else:
-		print("error")
-	move_camera(currentPlayer)
-	player_turn()
+		$CanvasLayer/Message.text = "You still have moves left. Cannot pass turn until all moves are used up"
+		$CanvasLayer/Message.show()
+		yield(get_tree().create_timer(3.0), "timeout")
+		$CanvasLayer/Message.hide()
+		
