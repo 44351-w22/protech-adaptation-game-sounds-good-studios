@@ -4,12 +4,13 @@ var current_scene = null
 
 var current_player = current_player setget set_current_player
 var next_player = next_player setget set_next_player
-var current_player_key = false setget set_current_player_key
 var map1_found = false setget set_map1_found
 var map2_found = false setget set_map2_found
 var map3_found = false setget set_map3_found
 var map4_found = false setget set_map4_found
 var map5_found = false setget set_map5_found
+var maze_beaten = false setget set_maze_beaten
+var timer_end = false setget set_timer_end
 
 func _ready():
 	var root = get_tree().get_root()
@@ -44,5 +45,7 @@ func set_current_player(value):
 	current_player = value
 func set_next_player(value):
 	next_player = value
-func set_current_player_key(value):
-	current_player_key = value
+func set_maze_beaten(value):
+	maze_beaten = value
+func set_timer_end(value):
+	timer_end = value

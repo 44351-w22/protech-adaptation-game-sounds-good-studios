@@ -133,8 +133,6 @@ __meta__ = {
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 8 )]
 
-[connection signal="defeat" from="." to="." method="_on_FindTheKey_defeat"]
-[connection signal="victory" from="." to="." method="_on_FindTheKey_victory"]
 [connection signal="playerWins" from="Maze" to="." method="_on_Maze_playerWins"]
 [connection signal="playerWins" from="Maze2" to="." method="_on_Maze2_playerWins"]
 [connection signal="playerWins" from="Maze3" to="." method="_on_Maze3_playerWins"]

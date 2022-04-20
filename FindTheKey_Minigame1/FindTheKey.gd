@@ -6,9 +6,6 @@ extends Node
 #Position 4: (201, 1, 0)
 #Position 5: (-204, 1, 0)
 
-signal victory
-signal defeat
-
 var rng = RandomNumberGenerator.new()
 var startingMaze = 0
 onready var player = $HedgePlayer
@@ -28,7 +25,6 @@ onready var map4 = $CanvasLayer/UI/Maze4
 onready var map5 = $CanvasLayer/UI/Maze5
 
 func _ready():
-	
 	rng.randomize()
 	startingMaze = rng.randi_range(1, 5)
 	if startingMaze == 1:
@@ -72,10 +68,9 @@ func _on_Maze_playerWins():
 	$Victory.play()
 	goal1.disabled = true
 	map1.visible = false
-	Global.current_player_key = true
 	Global.map1_found = false
-	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
+	Global.maze_beaten = true
 	queue_free()
 
 
@@ -86,10 +81,9 @@ func _on_Maze2_playerWins():
 	$Victory.play()
 	goal2.disabled = true
 	map2.visible = false
-	Global.current_player_key = true
 	Global.map2_found = false
-	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
+	Global.maze_beaten = true
 	queue_free()
 
 
@@ -100,10 +94,9 @@ func _on_Maze3_playerWins():
 	$Victory.play()
 	goal3.disabled = true
 	map3.visible = false
-	Global.current_player_key = true
 	Global.map3_found = false
-	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
+	Global.maze_beaten = true
 	queue_free()
 
 
@@ -114,10 +107,9 @@ func _on_Maze4_playerWins():
 	$Victory.play()
 	goal4.disabled = true
 	map4.visible = false
-	Global.current_player_key = true
 	Global.map4_found = false
-	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
+	Global.maze_beaten = true
 	queue_free()
 
 
@@ -128,10 +120,9 @@ func _on_Maze5_playerWins():
 	$Victory.play()
 	goal5.disabled = true
 	map5.visible = false
-	Global.current_player_key = true
 	Global.map5_found = false
-	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
+	Global.maze_beaten = true
 	queue_free()
 
 
@@ -154,8 +145,8 @@ func _on_Countdown_countdown_over():
 	Global.map4_found = false
 	Global.map5_found = false
 	$Defeat.play()
-	emit_signal("defeat")
 	yield(get_tree().create_timer(10.0), "timeout")
+	Global.timer_end = true
 	queue_free()
 
 func _on_Resume_pressed():

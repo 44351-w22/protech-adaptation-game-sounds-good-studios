@@ -19,6 +19,7 @@ onready var laugh = $SoundEffects/Laugh
 onready var cheer = $SoundEffects/Cheer
 var rng = RandomNumberGenerator.new()
 var map = 0
+var hidden = false
 
 var skins = [preload("res://assets/players/pieceGreen_single00.png"), 
 			preload("res://assets/players/piecePurple_single01.png"), 
@@ -67,6 +68,7 @@ func _physics_process(delta):
 	else:
 		currentPlayer.movesLeft = 0
 		$CanvasLayer/MovesLeft.text = "Moves Left: 0"
+	
 	#Adjust Maps Found
 	if currentPlayer.totalMapsFound == 0:
 		$CanvasLayer/MapsFound.text = "Maps Found: 0"
@@ -83,6 +85,16 @@ func _physics_process(delta):
 	else:
 		currentPlayer.totalMapsFound == 0
 		$CanvasLayer/MapsFound.text = "Maps Found: 0"
+	
+	#Check for minigame completed
+	if hidden == true:
+		if Global.maze_beaten == true:
+			show_all()
+			currentPlayer.key_found = true
+			end_turn()
+		if Global.timer_end == true:
+			show_all()
+			end_turn()
 
 func move_camera(p):
 	cam.get_parent().remove_child(cam)
@@ -145,7 +157,7 @@ func detect():
 		$CanvasLayer/Message.hide()
 		Global.goto_scene("res://FindTheKey_Minigame1/FindTheKey.tscn")
 		hide_all()
-		call_deferred("show_all")
+		#call_deferred("show_all")
 		
 
 func select_random_map():
@@ -218,6 +230,9 @@ func _on_Button_pressed():
 	currentPlayer.movesLeft = totalDiceRoll
 
 func _on_EndTurn_pressed():
+	end_turn()
+
+func end_turn():
 	if currentPlayer.movesLeft == 0:
 		currentPlayer = nextPlayer
 		if currentPlayer == p1:
@@ -237,9 +252,9 @@ func _on_EndTurn_pressed():
 		$CanvasLayer/Message.show()
 		yield(get_tree().create_timer(3.0), "timeout")
 		$CanvasLayer/Message.hide()
-		
 
 func hide_all():
+	hidden = true
 	$Title.hide()
 	$TileMap.hide()
 	$Doors.hide()
@@ -256,7 +271,7 @@ func hide_all():
 	music.stop()
 
 func show_all():
-	yield(get_tree().create_timer(190.0), "timeout")
+	#yield(get_tree().create_timer(190.0), "timeout")
 	$Title.show()
 	$TileMap.show()
 	$Doors.show()
@@ -270,6 +285,8 @@ func show_all():
 	$CanvasLayer/MovesLeft.show()
 	$OutSideTileMap.show()
 	music.play()
+	Global.timer_end = false
+	Global.maze_beaten = false
 
 func start_game():
 	currentPlayer = p1
