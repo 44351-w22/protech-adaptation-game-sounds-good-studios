@@ -17,8 +17,6 @@ onready var nextPlayer = Global.next_player
 var rng = RandomNumberGenerator.new()
 var map = 0
 
-onready var packed_scene = PackedScene.new()
-
 var skins = [preload("res://assets/players/pieceGreen_single00.png"), 
 			preload("res://assets/players/piecePurple_single01.png"), 
 			preload("res://assets/players/pieceBlue_single18.png"),
@@ -94,9 +92,9 @@ func detect():
 		$CanvasLayer/Message.show()
 		yield(get_tree().create_timer(3.0), "timeout")
 		$CanvasLayer/Message.hide()
-		packed_scene.pack(get_tree().get_current_scene())
-		ResourceSaver.save("res://World.tscn", packed_scene)
 		Global.goto_scene("res://FindTheKey_Minigame1/FindTheKey.tscn")
+		hide_all()
+		call_deferred("show_all")
 		
 
 func select_random_map():
@@ -189,3 +187,28 @@ func _on_EndTurn_pressed():
 		yield(get_tree().create_timer(3.0), "timeout")
 		$CanvasLayer/Message.hide()
 		
+
+func hide_all():
+	$Title.hide()
+	$TileMap.hide()
+	$Doors.hide()
+	$Player1.hide()
+	$Player2.hide()
+	$Player3.hide()
+	$Player4.hide()
+	$CanvasLayer/Dice_Roller.hide()
+	$CanvasLayer/EndTurn.hide()
+	$OutSideTileMap.hide()
+
+func show_all():
+	yield(get_tree().create_timer(190.0), "timeout")
+	$Title.show()
+	$TileMap.show()
+	$Doors.show()
+	$Player1.show()
+	$Player2.show()
+	$Player3.show()
+	$Player4.show()
+	$CanvasLayer/Dice_Roller.show()
+	$CanvasLayer/EndTurn.show()
+	$OutSideTileMap.show()

@@ -76,7 +76,7 @@ func _on_Maze_playerWins():
 	Global.map1_found = false
 	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
-	World.show()
+	queue_free()
 
 
 func _on_Maze2_playerWins():
@@ -90,7 +90,7 @@ func _on_Maze2_playerWins():
 	Global.map2_found = false
 	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
-	World.show()
+	queue_free()
 
 
 func _on_Maze3_playerWins():
@@ -104,7 +104,7 @@ func _on_Maze3_playerWins():
 	Global.map3_found = false
 	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
-	World.show()
+	queue_free()
 
 
 func _on_Maze4_playerWins():
@@ -118,7 +118,7 @@ func _on_Maze4_playerWins():
 	Global.map4_found = false
 	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
-	World.show()
+	queue_free()
 
 
 func _on_Maze5_playerWins():
@@ -132,7 +132,7 @@ func _on_Maze5_playerWins():
 	Global.map5_found = false
 	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
-	World.show()
+	queue_free()
 
 
 func _on_Countdown_countdown_over():
@@ -156,7 +156,7 @@ func _on_Countdown_countdown_over():
 	$Defeat.play()
 	emit_signal("defeat")
 	yield(get_tree().create_timer(10.0), "timeout")
-	World.show()
+	queue_free()
 
 func _on_Resume_pressed():
 	$Pause.hide()
