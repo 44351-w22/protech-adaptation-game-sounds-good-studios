@@ -31,3 +31,6 @@ collide_with_areas = true
 [node name="Right" type="RayCast2D" parent="."]
 rotation = 4.71239
 collide_with_areas = true
+
+[node name="GameCam" type="Camera2D" parent="."]
+current = true

@@ -28,6 +28,7 @@ onready var map4 = $UI/Maze4
 onready var map5 = $UI/Maze5
 
 func _ready():
+	
 	rng.randomize()
 	startingMaze = rng.randi_range(1, 5)
 	if startingMaze == 1:

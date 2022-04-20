@@ -1,6 +1,6 @@
 extends Node
 
-onready var cam = $GameCam
+onready var cam = $Player1/GameCam
 onready var p1 = $Player1
 onready var p2 = $Player2
 onready var p3 = $Player3
