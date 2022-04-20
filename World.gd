@@ -17,6 +17,7 @@ onready var nextPlayer = Global.next_player
 onready var music = $SoundEffects/Music
 onready var laugh = $SoundEffects/Laugh
 onready var cheer = $SoundEffects/Cheer
+onready var playerLabel = $CanvasLayer/CurrentPlayer
 var rng = RandomNumberGenerator.new()
 var map = 0
 var hidden = false
@@ -85,6 +86,16 @@ func _physics_process(delta):
 	else:
 		currentPlayer.totalMapsFound == 0
 		$CanvasLayer/MapsFound.text = "Maps Found: 0"
+	
+	#Update Player Label
+	if currentPlayer == p1:
+		playerLabel.text = "Player 1"
+	elif currentPlayer == p2:
+		playerLabel.text = "Player 2"
+	elif currentPlayer == p3:
+		playerLabel.text = "Player 3"
+	elif currentPlayer == p4:
+		playerLabel.text = "Player 4"
 	
 	#Check for minigame completed
 	if hidden == true:
@@ -267,6 +278,7 @@ func hide_all():
 	$CanvasLayer/MapsFound.hide()
 	$CanvasLayer/KeyFound.hide()
 	$CanvasLayer/MovesLeft.hide()
+	playerLabel.hide()
 	$OutSideTileMap.hide()
 	music.stop()
 
@@ -283,6 +295,7 @@ func show_all():
 	$CanvasLayer/EndTurn.show()
 	$CanvasLayer/MapsFound.show()
 	$CanvasLayer/MovesLeft.show()
+	playerLabel.show()
 	$OutSideTileMap.show()
 	music.play()
 	Global.timer_end = false
