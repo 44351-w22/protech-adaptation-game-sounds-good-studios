@@ -14,6 +14,9 @@ onready var diceContainer = $CanvasLayer/Dice_Roller/Container
 onready var totalDiceRoll = dice.totalRoll
 onready var currentPlayer = Global.current_player
 onready var nextPlayer = Global.next_player
+onready var music = $SoundEffects/Music
+onready var laugh = $SoundEffects/Laugh
+onready var cheer = $SoundEffects/Cheer
 var rng = RandomNumberGenerator.new()
 var map = 0
 
@@ -31,11 +34,55 @@ func _ready():
 	p2Sprite.texture = skins[1]
 	p3Sprite.texture = skins[2]
 	p4Sprite.texture = skins[4]
-	currentPlayer = p1
-	nextPlayer = p2
-	move_camera(p1)
-	player_turn()
-	
+	start_game()
+
+func _physics_process(delta):
+	#Adjust Moves Left
+	if currentPlayer.movesLeft == 0:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 0"
+	elif currentPlayer.movesLeft == 1:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 1"
+	elif currentPlayer.movesLeft == 2:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 2"
+	elif currentPlayer.movesLeft == 3:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 3"
+	elif currentPlayer.movesLeft == 4:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 4"
+	elif currentPlayer.movesLeft == 5:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 5"
+	elif currentPlayer.movesLeft == 6:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 6"
+	elif currentPlayer.movesLeft == 7:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 7"
+	elif currentPlayer.movesLeft == 8:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 8"
+	elif currentPlayer.movesLeft == 9:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 9"
+	elif currentPlayer.movesLeft == 10:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 10"
+	elif currentPlayer.movesLeft == 11:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 11"
+	elif currentPlayer.movesLeft == 12:
+		$CanvasLayer/MovesLeft.text = "Moves Left: 12"
+	else:
+		currentPlayer.movesLeft = 0
+		$CanvasLayer/MovesLeft.text = "Moves Left: 0"
+	#Adjust Maps Found
+	if currentPlayer.totalMapsFound == 0:
+		$CanvasLayer/MapsFound.text = "Maps Found: 0"
+	elif currentPlayer.totalMapsFound == 1:
+		$CanvasLayer/MapsFound.text = "Maps Found: 1"
+	elif currentPlayer.totalMapsFound == 2:
+		$CanvasLayer/MapsFound.text = "Maps Found: 2"
+	elif currentPlayer.totalMapsFound == 3:
+		$CanvasLayer/MapsFound.text = "Maps Found: 3"
+	elif currentPlayer.totalMapsFound == 4:
+		$CanvasLayer/MapsFound.text = "Maps Found: 4"
+	elif currentPlayer.totalMapsFound == 5:
+		$CanvasLayer/MapsFound.text = "Maps Found: 5"
+	else:
+		currentPlayer.totalMapsFound == 0
+		$CanvasLayer/MapsFound.text = "Maps Found: 0"
 
 func move_camera(p):
 	cam.get_parent().remove_child(cam)
@@ -53,6 +100,7 @@ func detect():
 	var tile = $TileMap.tile_set.tile_get_name(tile_index)
 	
 	if tile == "Light Gray Brick Floor.png 0":
+		laugh.play()
 		currentPlayer.position.x = 608
 		currentPlayer.position.y = 96
 		$CanvasLayer/Message.text = "Position Reset!!!"
@@ -60,8 +108,10 @@ func detect():
 		yield(get_tree().create_timer(3.0), "timeout")
 		$CanvasLayer/Message.hide()
 	elif tile == "Pale Blue Brick Floor.png 1":
+		cheer.play()
 		select_random_map()
 	elif tile == "Purple Brick Floor.png 2":
+		laugh.play()
 		if currentPlayer.key_found == true:
 			currentPlayer.key_found == false
 			$CanvasLayer/Message.text = "Key Lost"
@@ -78,6 +128,7 @@ func detect():
 	elif tile == "Red Brick Floor.png 3":
 		print("red")
 	elif tile == "Yellow Brick Floor.png 4":
+		cheer.play()
 		if(currentPlayer.map1_found == true):
 			Global.map1_found = true
 		elif(currentPlayer.map2_found == true):
@@ -198,7 +249,11 @@ func hide_all():
 	$Player4.hide()
 	$CanvasLayer/Dice_Roller.hide()
 	$CanvasLayer/EndTurn.hide()
+	$CanvasLayer/MapsFound.hide()
+	$CanvasLayer/KeyFound.hide()
+	$CanvasLayer/MovesLeft.hide()
 	$OutSideTileMap.hide()
+	music.stop()
 
 func show_all():
 	yield(get_tree().create_timer(190.0), "timeout")
@@ -211,4 +266,13 @@ func show_all():
 	$Player4.show()
 	$CanvasLayer/Dice_Roller.show()
 	$CanvasLayer/EndTurn.show()
+	$CanvasLayer/MapsFound.show()
+	$CanvasLayer/MovesLeft.show()
 	$OutSideTileMap.show()
+	music.play()
+
+func start_game():
+	currentPlayer = p1
+	nextPlayer = p2
+	move_camera(p1)
+	player_turn()
