@@ -302,7 +302,16 @@ func show_all():
 	Global.maze_beaten = false
 
 func start_game():
+	p1.position.x = p1.start_Position_x
+	p1.position.y = p1.start_Position_y
+	p2.position.x = p2.start_Position_x
+	p2.position.y = p2.start_Position_y
+	p3.position.x = p3.start_Position_x
+	p3.position.y = p3.start_Position_y
+	p4.position.x = p4.start_Position_x
+	p4.position.y = p4.start_Position_y
 	currentPlayer = p1
 	nextPlayer = p2
 	move_camera(p1)
+	music.play()
 	player_turn()
