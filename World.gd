@@ -27,17 +27,13 @@ var skins = [preload("res://assets/players/pieceGreen_single00.png"),
 
 
 func _ready():
+	rng.randomize()
 	p1Sprite.texture = skins[0]
 	p2Sprite.texture = skins[1]
 	p3Sprite.texture = skins[2]
 	p4Sprite.texture = skins[4]
 	currentPlayer = p1
 	nextPlayer = p2
-	Global.map1_found = true
-	Global.map2_found = true
-	Global.map3_found = true
-	Global.map4_found = true
-	Global.map5_found = true
 	move_camera(p1)
 	player_turn()
 	

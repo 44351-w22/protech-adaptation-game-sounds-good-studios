@@ -401,6 +401,8 @@ shortcut = SubResource( 36 )
 
 [sub_resource type="DynamicFont" id=42]
 size = 64
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
 [sub_resource type="ConvexPolygonShape2D" id=38]
@@ -601,9 +603,10 @@ __meta__ = {
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -329.0
-margin_right = 331.0
-margin_bottom = 71.0
+margin_left = -331.0
+margin_top = 53.0
+margin_right = 329.0
+margin_bottom = 124.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )

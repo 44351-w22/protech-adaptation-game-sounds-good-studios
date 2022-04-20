@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://FindTheKey_Minigame1/Countdown.gd" type="Script" id=1]
 [ext_resource path="res://assets/BLOODY.TTF" type="DynamicFontData" id=2]
@@ -24,6 +24,11 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=4]
 size = 100
 outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+outline_size = 10
 font_data = ExtResource( 2 )
 
 [node name="Countdown" type="Control"]
@@ -125,5 +130,16 @@ text = "YOU LOSE!!!"
 [node name="Clock_Tick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = 10.0
+
+[node name="CurrentMaze" type="Label" parent="."]
+margin_left = 1066.0
+margin_top = 14.0
+margin_right = 1259.0
+margin_bottom = 85.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Maze 1"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

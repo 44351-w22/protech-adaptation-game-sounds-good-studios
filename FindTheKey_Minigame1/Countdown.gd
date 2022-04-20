@@ -7,12 +7,12 @@ export var minutes = 0
 var desc = 0
 
 func _physics_process(delta):
-	if seconds > 0 and desc <= 0:
+	if seconds >= 0 and desc <= 0:
 		seconds -= 1
 		desc = 10
-	if minutes > 0 and seconds <= 0:
+	if minutes > 0 and seconds < 0:
 		minutes -= 1
-		seconds = 60
+		seconds = 59
 	
 	if seconds >= 10:
 		$Sec.set_text(str(seconds))

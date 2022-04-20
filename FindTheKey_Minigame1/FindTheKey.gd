@@ -35,22 +35,27 @@ func _ready():
 		player.translation = Vector3(0, 1, 0)
 		if Global.map1_found == true:
 			map5.visible = true
+		$UI/CurrentMaze.text = "Maze 5"
 	elif startingMaze == 2:
 		player.translation = Vector3(0, 1, -205)
 		if Global.map2_found == true:
 			map4.visible = true
+		$UI/CurrentMaze.text = "Maze 4"
 	elif startingMaze == 3:
 		player.translation = Vector3(0, 1, 203)
 		if Global.map3_found == true:
 			map2.visible = true
+		$UI/CurrentMaze.text = "Maze 2"
 	elif startingMaze == 4:
 		player.translation = Vector3(201, 1, 0)
 		if Global.map4_found == true:
 			map1.visible = true
+		$UI/CurrentMaze.text = "Maze 1"
 	elif startingMaze == 5:
 		player.translation = Vector3(-204, 1, 0)
 		if Global.map5_found == true:
 			map3.visible = true
+		$UI/CurrentMaze.text = "Maze 3"
 	else:
 		print("error with random number generation")
 
@@ -68,6 +73,7 @@ func _on_Maze_playerWins():
 	goal1.disabled = true
 	map1.visible = false
 	Global.current_player_key = true
+	Global.map1_found = false
 	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
 	World.show()
@@ -81,6 +87,7 @@ func _on_Maze2_playerWins():
 	goal2.disabled = true
 	map2.visible = false
 	Global.current_player_key = true
+	Global.map2_found = false
 	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
 	World.show()
@@ -94,6 +101,7 @@ func _on_Maze3_playerWins():
 	goal3.disabled = true
 	map3.visible = false
 	Global.current_player_key = true
+	Global.map3_found = false
 	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
 	World.show()
@@ -107,6 +115,7 @@ func _on_Maze4_playerWins():
 	goal4.disabled = true
 	map4.visible = false
 	Global.current_player_key = true
+	Global.map4_found = false
 	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
 	World.show()
@@ -120,6 +129,7 @@ func _on_Maze5_playerWins():
 	goal5.disabled = true
 	map5.visible = false
 	Global.current_player_key = true
+	Global.map5_found = false
 	emit_signal("victory")
 	yield(get_tree().create_timer(10.0), "timeout")
 	World.show()
@@ -138,6 +148,11 @@ func _on_Countdown_countdown_over():
 	map3.visible = false
 	map4.visible = false
 	map5.visible = false
+	Global.map1_found = false
+	Global.map2_found = false
+	Global.map3_found = false
+	Global.map4_found = false
+	Global.map5_found = false
 	$Defeat.play()
 	emit_signal("defeat")
 	yield(get_tree().create_timer(10.0), "timeout")
