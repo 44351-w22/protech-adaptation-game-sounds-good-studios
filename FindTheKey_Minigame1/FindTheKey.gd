@@ -12,20 +12,20 @@ signal defeat
 var rng = RandomNumberGenerator.new()
 var startingMaze = 0
 onready var player = $HedgePlayer
-onready var ui = $UI
-onready var timer = $UI/Timer
-onready var lose = $UI/Defeat
-onready var win = $UI/Victory
+onready var ui = $CanvasLayer/UI
+onready var timer = $CanvasLayer/UI/Timer
+onready var lose = $CanvasLayer/UI/Defeat
+onready var win = $CanvasLayer/UI/Victory
 onready var goal1 = $Maze/Goal/CollisionShape
 onready var goal2 = $Maze2/Goal/CollisionShape
 onready var goal3 = $Maze3/Goal/CollisionShape
 onready var goal4 = $Maze4/Goal/CollisionShape
 onready var goal5 = $Maze5/Goal/CollisionShape
-onready var map1 = $UI/Maze
-onready var map2 = $UI/Maze2
-onready var map3 = $UI/Maze3
-onready var map4 = $UI/Maze4
-onready var map5 = $UI/Maze5
+onready var map1 = $CanvasLayer/UI/Maze
+onready var map2 = $CanvasLayer/UI/Maze2
+onready var map3 = $CanvasLayer/UI/Maze3
+onready var map4 = $CanvasLayer/UI/Maze4
+onready var map5 = $CanvasLayer/UI/Maze5
 
 func _ready():
 	
@@ -35,27 +35,27 @@ func _ready():
 		player.translation = Vector3(0, 1, 0)
 		if Global.map1_found == true:
 			map5.visible = true
-		$UI/CurrentMaze.text = "Maze 5"
+		$CanvasLayer/UI/CurrentMaze.text = "Maze 5"
 	elif startingMaze == 2:
 		player.translation = Vector3(0, 1, -205)
 		if Global.map2_found == true:
 			map4.visible = true
-		$UI/CurrentMaze.text = "Maze 4"
+		$CanvasLayer/UI/CurrentMaze.text = "Maze 4"
 	elif startingMaze == 3:
 		player.translation = Vector3(0, 1, 203)
 		if Global.map3_found == true:
 			map2.visible = true
-		$UI/CurrentMaze.text = "Maze 2"
+		$CanvasLayer/UI/CurrentMaze.text = "Maze 2"
 	elif startingMaze == 4:
 		player.translation = Vector3(201, 1, 0)
 		if Global.map4_found == true:
 			map1.visible = true
-		$UI/CurrentMaze.text = "Maze 1"
+		$CanvasLayer/UI/CurrentMaze.text = "Maze 1"
 	elif startingMaze == 5:
 		player.translation = Vector3(-204, 1, 0)
 		if Global.map5_found == true:
 			map3.visible = true
-		$UI/CurrentMaze.text = "Maze 3"
+		$CanvasLayer/UI/CurrentMaze.text = "Maze 3"
 	else:
 		print("error with random number generation")
 

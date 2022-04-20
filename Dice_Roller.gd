@@ -11,8 +11,8 @@ var dice = [preload("res://assets/dice/dieWhite1.png"),
 var rng = RandomNumberGenerator.new()
 export var totalRoll = 0
 
-onready var diceA = $DiceA
-onready var diceB = $DiceB
+onready var diceA = $Container/DiceA
+onready var diceB = $Container/DiceB
 
 func _ready():
 	rng.randomize()

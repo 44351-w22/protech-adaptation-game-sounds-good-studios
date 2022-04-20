@@ -11,14 +11,20 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 46
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 46
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 46
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -27,13 +33,13 @@ outline_color = Color( 1, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 64
-outline_size = 10
+size = 46
+outline_size = 3
 font_data = ExtResource( 2 )
 
 [node name="Countdown" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -132,14 +138,19 @@ stream = ExtResource( 3 )
 volume_db = 10.0
 
 [node name="CurrentMaze" type="Label" parent="."]
-margin_left = 1066.0
-margin_top = 14.0
-margin_right = 1259.0
-margin_bottom = 85.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -173.0
+margin_top = 11.0
+margin_right = -4.0
+margin_bottom = 66.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "Maze 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

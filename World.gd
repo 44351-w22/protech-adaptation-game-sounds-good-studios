@@ -10,6 +10,7 @@ onready var p2Sprite = $Player2/Sprite
 onready var p3Sprite = $Player3/Sprite
 onready var p4Sprite = $Player4/Sprite
 onready var dice = $CanvasLayer/Dice_Roller
+onready var diceContainer = $CanvasLayer/Dice_Roller/Container
 onready var totalDiceRoll = dice.totalRoll
 onready var currentPlayer = Global.current_player
 onready var nextPlayer = Global.next_player
