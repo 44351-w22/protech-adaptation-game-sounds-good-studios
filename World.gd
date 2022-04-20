@@ -133,6 +133,10 @@ func detect():
 
 func player_turn():
 	dice.visible = true
+	if currentPlayer.key_found == true:
+		$CanvasLayer/KeyFound.visible = true
+	else:
+		$CanvasLayer/KeyFound.visible = false
 
 func _on_Button_pressed():
 	yield(get_tree().create_timer(2.0), "timeout")
