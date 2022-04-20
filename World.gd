@@ -62,39 +62,7 @@ func detect():
 		yield(get_tree().create_timer(3.0), "timeout")
 		$CanvasLayer/Message.hide()
 	elif tile == "Pale Blue Brick Floor.png 1":
-		map = rng.randi_range(1, 5)
-		if map == 1:
-			currentPlayer.map1_found = true
-			$CanvasLayer/Message.text = "Map of Maze 1 Found"
-			$CanvasLayer/Message.show()
-			yield(get_tree().create_timer(3.0), "timeout")
-			$CanvasLayer/Message.hide()
-		elif map == 2:
-			currentPlayer.map2_found = true
-			$CanvasLayer/Message.text = "Map of Maze 2 Found"
-			$CanvasLayer/Message.show()
-			yield(get_tree().create_timer(3.0), "timeout")
-			$CanvasLayer/Message.hide()
-		elif map == 3:
-			currentPlayer.map3_found = true
-			$CanvasLayer/Message.text = "Map of Maze 3 Found"
-			$CanvasLayer/Message.show()
-			yield(get_tree().create_timer(3.0), "timeout")
-			$CanvasLayer/Message.hide()
-		elif map == 4:
-			currentPlayer.map4_found = true
-			$CanvasLayer/Message.text = "Map of Maze 4 Found"
-			$CanvasLayer/Message.show()
-			yield(get_tree().create_timer(3.0), "timeout")
-			$CanvasLayer/Message.hide()
-		elif map == 5:
-			currentPlayer.map5_found = true
-			$CanvasLayer/Message.text = "Map of Maze 5 Found"
-			$CanvasLayer/Message.show()
-			yield(get_tree().create_timer(3.0), "timeout")
-			$CanvasLayer/Message.hide()
-		else:
-			pass
+		select_random_map()
 	elif tile == "Purple Brick Floor.png 2":
 		if currentPlayer.key_found == true:
 			currentPlayer.key_found == false
@@ -130,6 +98,62 @@ func detect():
 		ResourceSaver.save("res://World.tscn", packed_scene)
 		Global.goto_scene("res://FindTheKey_Minigame1/FindTheKey.tscn")
 		
+
+func select_random_map():
+	if currentPlayer.map1_found == true and currentPlayer.map2_found == true and currentPlayer.map3_found == true and currentPlayer.map4_found == true and currentPlayer.map5_found == true:
+		$CanvasLayer/Message.text = "All Maps Found"
+		$CanvasLayer/Message.show()
+		yield(get_tree().create_timer(3.0), "timeout")
+		$CanvasLayer/Message.hide()
+	else:
+		map = rng.randi_range(1, 5)
+		if map == 1:
+			if currentPlayer.map1_found == true:
+				select_random_map()
+			else:
+				currentPlayer.map1_found = true
+				$CanvasLayer/Message.text = "Map of Maze 1 Found"
+				$CanvasLayer/Message.show()
+				yield(get_tree().create_timer(3.0), "timeout")
+				$CanvasLayer/Message.hide()
+		elif map == 2:
+			if currentPlayer.map2_found == true:
+				select_random_map()
+			else:
+				currentPlayer.map2_found = true
+				$CanvasLayer/Message.text = "Map of Maze 2 Found"
+				$CanvasLayer/Message.show()
+				yield(get_tree().create_timer(3.0), "timeout")
+				$CanvasLayer/Message.hide()
+		elif map == 3:
+			if currentPlayer.map3_found == true:
+				select_random_map()
+			else:
+				currentPlayer.map3_found = true
+				$CanvasLayer/Message.text = "Map of Maze 3 Found"
+				$CanvasLayer/Message.show()
+				yield(get_tree().create_timer(3.0), "timeout")
+				$CanvasLayer/Message.hide()
+		elif map == 4:
+			if currentPlayer.map4_found == true:
+				select_random_map()
+			else:
+				currentPlayer.map4_found = true
+				$CanvasLayer/Message.text = "Map of Maze 4 Found"
+				$CanvasLayer/Message.show()
+				yield(get_tree().create_timer(3.0), "timeout")
+				$CanvasLayer/Message.hide()
+		elif map == 5:
+			if currentPlayer.map5_found == true:
+				select_random_map()
+			else:
+				currentPlayer.map5_found = true
+				$CanvasLayer/Message.text = "Map of Maze 5 Found"
+				$CanvasLayer/Message.show()
+				yield(get_tree().create_timer(3.0), "timeout")
+				$CanvasLayer/Message.hide()
+		else:
+			pass
 
 func player_turn():
 	dice.visible = true
