@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://DoorTileMap.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Dice_Roller.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/BLOODY.TTF" type="DynamicFontData" id=6]
 [ext_resource path="res://OutSideTileMap.tscn" type="PackedScene" id=7]
-[ext_resource path="res://MainMenu.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/Evil_Laugh_Male_6-Himan-1359990674.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/Children Yay! Sound Effect.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/Tiles/Light Gray Brick Floor.png" type="Texture" id=11]
@@ -417,18 +416,6 @@ font_data = ExtResource( 6 )
 [node name="World" type="Node"]
 script = ExtResource( 4 )
 
-[node name="StartScreen" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="StartScreen"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainMenu" parent="StartScreen" instance=ExtResource( 8 )]
-
 [node name="Title" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
@@ -494,21 +481,20 @@ shape = SubResource( 33 )
 [node name="Down" parent="Player1" index="1"]
 cast_to = Vector2( 64, 0 )
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Dice_Roller" parent="UI" instance=ExtResource( 5 )]
+[node name="Dice_Roller" parent="CanvasLayer" instance=ExtResource( 5 )]
 visible = false
 totalRoll = 4
 
-[node name="DiceB" parent="UI/Dice_Roller/Container" index="1"]
+[node name="DiceB" parent="CanvasLayer/Dice_Roller/Container" index="1"]
 texture = ExtResource( 28 )
 
-[node name="Button" parent="UI/Dice_Roller/Container" index="2"]
+[node name="Button" parent="CanvasLayer/Dice_Roller/Container" index="2"]
 custom_fonts/font = SubResource( 44 )
 shortcut = SubResource( 3 )
 
-[node name="EndTurn" type="Button" parent="UI"]
-visible = false
+[node name="EndTurn" type="Button" parent="CanvasLayer"]
 margin_left = 17.0
 margin_top = 19.0
 margin_right = 93.0
@@ -525,7 +511,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Message" type="Label" parent="UI"]
+[node name="Message" type="Label" parent="CanvasLayer"]
 visible = false
 anchor_left = 0.5
 anchor_right = 0.5
@@ -545,7 +531,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="KeyFound" type="Label" parent="UI"]
+[node name="KeyFound" type="Label" parent="CanvasLayer"]
 visible = false
 anchor_left = 1.0
 anchor_right = 1.0
@@ -560,8 +546,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MapsFound" type="Label" parent="UI"]
-visible = false
+[node name="MapsFound" type="Label" parent="CanvasLayer"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -287.0
@@ -575,8 +560,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MovesLeft" type="Label" parent="UI"]
-visible = false
+[node name="MovesLeft" type="Label" parent="CanvasLayer"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -294.0
@@ -590,8 +574,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CurrentPlayer" type="Label" parent="UI"]
-visible = false
+[node name="CurrentPlayer" type="Label" parent="CanvasLayer"]
 margin_left = 7.0
 margin_top = 55.0
 margin_right = 273.0
@@ -610,31 +593,22 @@ tile_data = PoolIntArray( -1376301, 1, 0, -1376300, 1, 0, -1376299, 1, 0, -13762
 
 [node name="Music" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 16 )
-<<<<<<< Updated upstream
-=======
-volume_db = -10.0
->>>>>>> Stashed changes
 
 [node name="Laugh" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 9 )
 
 [node name="Cheer" type="AudioStreamPlayer" parent="SoundEffects"]
 stream = ExtResource( 10 )
-volume_db = -5.0
 
-[connection signal="pressed" from="StartScreen/MainMenu/HBoxContainer/VBoxContainer/MenuOptions/Begin" to="." method="_on_Begin_pressed"]
-[connection signal="pressed" from="StartScreen/MainMenu/HBoxContainer/VBoxContainer/MenuOptions/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="StartScreen/MainMenu/HBoxContainer/VBoxContainer/MenuOptions/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="Collision" from="Player4" to="." method="_on_Player1_Collision"]
 [connection signal="Collision" from="Player3" to="." method="_on_Player1_Collision"]
 [connection signal="Collision" from="Player2" to="." method="_on_Player1_Collision"]
 [connection signal="Collision" from="Player1" to="." method="_on_Player1_Collision"]
-[connection signal="pressed" from="UI/Dice_Roller/Container/Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="UI/EndTurn" to="." method="_on_EndTurn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Dice_Roller/Container/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/EndTurn" to="." method="_on_EndTurn_pressed"]
 
-[editable path="StartScreen/MainMenu"]
 [editable path="Player4"]
 [editable path="Player3"]
 [editable path="Player2"]
 [editable path="Player1"]
-[editable path="UI/Dice_Roller"]
+[editable path="CanvasLayer/Dice_Roller"]
