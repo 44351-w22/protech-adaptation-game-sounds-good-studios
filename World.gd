@@ -21,6 +21,7 @@ onready var playerLabel = $CanvasLayer/CurrentPlayer
 var rng = RandomNumberGenerator.new()
 var map = 0
 var hidden = false
+var onMainMenu = true
 
 var skins = [preload("res://assets/players/pieceGreen_single00.png"), 
 			preload("res://assets/players/piecePurple_single01.png"), 
@@ -107,6 +108,12 @@ func _physics_process(delta):
 			show_all()
 			end_turn()
 
+func _unhandled_input(event):
+	if(event.is_action_pressed("pause")):
+		if onMainMenu != true:
+			get_tree().paused = true
+			$CanvasLayer/Pause.show()
+
 func move_camera(p):
 	cam.get_parent().remove_child(cam)
 	p.add_child(cam)
@@ -184,6 +191,7 @@ func select_random_map():
 				select_random_map()
 			else:
 				currentPlayer.map1_found = true
+				currentPlayer.totalMapsFound += 1
 				$CanvasLayer/Message.text = "Map of Maze 1 Found"
 				$CanvasLayer/Message.show()
 				yield(get_tree().create_timer(3.0), "timeout")
@@ -193,6 +201,7 @@ func select_random_map():
 				select_random_map()
 			else:
 				currentPlayer.map2_found = true
+				currentPlayer.totalMapsFound += 1
 				$CanvasLayer/Message.text = "Map of Maze 2 Found"
 				$CanvasLayer/Message.show()
 				yield(get_tree().create_timer(3.0), "timeout")
@@ -202,6 +211,7 @@ func select_random_map():
 				select_random_map()
 			else:
 				currentPlayer.map3_found = true
+				currentPlayer.totalMapsFound += 1
 				$CanvasLayer/Message.text = "Map of Maze 3 Found"
 				$CanvasLayer/Message.show()
 				yield(get_tree().create_timer(3.0), "timeout")
@@ -211,6 +221,7 @@ func select_random_map():
 				select_random_map()
 			else:
 				currentPlayer.map4_found = true
+				currentPlayer.totalMapsFound += 1
 				$CanvasLayer/Message.text = "Map of Maze 4 Found"
 				$CanvasLayer/Message.show()
 				yield(get_tree().create_timer(3.0), "timeout")
@@ -220,6 +231,7 @@ func select_random_map():
 				select_random_map()
 			else:
 				currentPlayer.map5_found = true
+				currentPlayer.totalMapsFound += 1
 				$CanvasLayer/Message.text = "Map of Maze 5 Found"
 				$CanvasLayer/Message.show()
 				yield(get_tree().create_timer(3.0), "timeout")
@@ -317,6 +329,8 @@ func start_game():
 	player_turn()
 
 
+
+#UI Buttons
 func _on_Begin_pressed():
 	$StartScreen/ColorRect.hide()
 	$StartScreen/MainMenu.hide()
@@ -324,12 +338,18 @@ func _on_Begin_pressed():
 	$CanvasLayer/MapsFound.show()
 	$CanvasLayer/MovesLeft.show()
 	playerLabel.show()
+	onMainMenu = false
 	start_game()
 
 
-func _on_Options_pressed():
-	pass
-
-
 func _on_Exit_pressed():
+	get_tree().quit()
+
+
+func _on_Resume_pressed():
+	$CanvasLayer/Pause.hide()
+	get_tree().paused = false
+
+
+func _on_Quit_pressed():
 	get_tree().quit()

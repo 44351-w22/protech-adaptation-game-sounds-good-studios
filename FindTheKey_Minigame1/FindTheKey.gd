@@ -152,3 +152,7 @@ func _on_Countdown_countdown_over():
 func _on_Resume_pressed():
 	$Pause.hide()
 	get_tree().paused = false
+
+
+func _on_Quit_pressed():
+	get_tree().quit()
