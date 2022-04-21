@@ -36,7 +36,7 @@ func _ready():
 	p2Sprite.texture = skins[1]
 	p3Sprite.texture = skins[2]
 	p4Sprite.texture = skins[4]
-	start_game()
+	currentPlayer = p1
 
 func _physics_process(delta):
 	#Adjust Moves Left
@@ -154,13 +154,13 @@ func detect():
 		cheer.play()
 		if(currentPlayer.map1_found == true):
 			Global.map1_found = true
-		elif(currentPlayer.map2_found == true):
+		if(currentPlayer.map2_found == true):
 			Global.map2_found = true
-		elif(currentPlayer.map3_found == true):
+		if(currentPlayer.map3_found == true):
 			Global.map3_found = true
-		elif(currentPlayer.map4_found == true):
+		if(currentPlayer.map4_found == true):
 			Global.map4_found = true
-		elif(currentPlayer.map5_found == true):
+		if(currentPlayer.map5_found == true):
 			Global.map5_found = true
 		$CanvasLayer/Message.text = "Minigame Beginning. \nFIND THE KEY"
 		$CanvasLayer/Message.show()
@@ -315,3 +315,21 @@ func start_game():
 	move_camera(p1)
 	music.play()
 	player_turn()
+
+
+func _on_Begin_pressed():
+	$StartScreen/ColorRect.hide()
+	$StartScreen/MainMenu.hide()
+	$CanvasLayer/EndTurn.show()
+	$CanvasLayer/MapsFound.show()
+	$CanvasLayer/MovesLeft.show()
+	playerLabel.show()
+	start_game()
+
+
+func _on_Options_pressed():
+	pass
+
+
+func _on_Exit_pressed():
+	get_tree().quit()
