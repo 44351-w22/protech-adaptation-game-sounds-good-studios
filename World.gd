@@ -128,6 +128,9 @@ func detect():
 	var tile_coord = $TileMap.world_to_map(currentPlayer.global_position)
 	var tile_index = $TileMap.get_cellv(tile_coord)
 	var tile = $TileMap.tile_set.tile_get_name(tile_index)
+	var door_tile_coord = $Doors.world_to_map(currentPlayer.global_position)
+	var door_tile_index = $Doors.get_cellv(door_tile_coord)
+	var door_tile = $Doors.tile_set.tile_get_name(door_tile_index)
 	
 	if tile == "Light Gray Brick Floor.png 0":
 		laugh.play()
@@ -176,7 +179,14 @@ func detect():
 		Global.goto_scene("res://FindTheKey_Minigame1/FindTheKey.tscn")
 		hide_all()
 		#call_deferred("show_all")
-		
+	elif door_tile == "MasterDoor.png":
+		if currentPlayer.key_found == true:
+			game_win()
+		else:
+			$CanvasLayer/Message.text = "Cannot Leave the Belladonna without a Key"
+			$CanvasLayer/Message.show()
+			yield(get_tree().create_timer(3.0), "timeout")
+			$CanvasLayer/Message.hide()
 
 func select_random_map():
 	if currentPlayer.map1_found == true and currentPlayer.map2_found == true and currentPlayer.map3_found == true and currentPlayer.map4_found == true and currentPlayer.map5_found == true:
@@ -328,6 +338,11 @@ func start_game():
 	music.play()
 	player_turn()
 
+func game_win():
+	$CanvasLayer/Message.text = "YOU WIN!!!"
+	$CanvasLayer/Message.show()
+	yield(get_tree().create_timer(3.0), "timeout")
+	$CanvasLayer/Message.hide()
 
 
 #UI Buttons
