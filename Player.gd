@@ -38,8 +38,6 @@ func move(dir):
 			movesLeft -= 1
 		if movesLeft == 0:
 			emit_signal("Collision")
-		#if $CollisionShape2D.position.x != start_Position_x or $CollisionShape2D.position.y != start_Position_y:
-			#emit_signal("Collision")
 		
 		
 func move_tween(dir):
