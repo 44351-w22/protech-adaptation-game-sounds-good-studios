@@ -128,9 +128,7 @@ func detect():
 	var tile_coord = $TileMap.world_to_map(currentPlayer.global_position)
 	var tile_index = $TileMap.get_cellv(tile_coord)
 	var tile = $TileMap.tile_set.tile_get_name(tile_index)
-	var door_tile_coord = $Doors.world_to_map(currentPlayer.global_position)
-	var door_tile_index = $Doors.get_cellv(door_tile_coord)
-	var door_tile = $Doors.tile_set.tile_get_name(door_tile_index)
+	var door_tile = $Doors.tile_set.tile_get_name(1)
 	
 	if tile == "Light Gray Brick Floor.png 0":
 		laugh.play()
@@ -179,7 +177,7 @@ func detect():
 		Global.goto_scene("res://FindTheKey_Minigame1/FindTheKey.tscn")
 		hide_all()
 		#call_deferred("show_all")
-	elif door_tile == "MasterDoor.png":
+	elif door_tile == "MasterDoor.png 1":
 		if currentPlayer.key_found == true:
 			game_win()
 		else:

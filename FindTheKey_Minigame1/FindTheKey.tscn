@@ -79,6 +79,8 @@ stream = ExtResource( 11 )
 [connection signal="playerWins" from="Maze3" to="." method="_on_Maze3_playerWins"]
 [connection signal="playerWins" from="Maze4" to="." method="_on_Maze4_playerWins"]
 [connection signal="playerWins" from="Maze5" to="." method="_on_Maze5_playerWins"]
+[connection signal="pressed" from="Pause/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Pause/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="countdown_over" from="CanvasLayer/UI" to="." method="_on_Countdown_countdown_over"]
 
 [editable path="Maze"]
@@ -86,4 +88,5 @@ stream = ExtResource( 11 )
 [editable path="Maze3"]
 [editable path="Maze4"]
 [editable path="Maze5"]
+[editable path="Pause"]
 [editable path="CanvasLayer/UI"]
