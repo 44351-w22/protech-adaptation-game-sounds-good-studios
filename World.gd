@@ -102,7 +102,7 @@ func _physics_process(delta):
 	if hidden == true:
 		if Global.maze_beaten == true:
 			show_all()
-			currentPlayer.key_found = true
+			currentPlayer.small_key_found = true
 			end_turn()
 		if Global.timer_end == true:
 			show_all()
@@ -128,8 +128,6 @@ func detect():
 	var tile_coord = $TileMap.world_to_map(currentPlayer.global_position)
 	var tile_index = $TileMap.get_cellv(tile_coord)
 	var tile = $TileMap.tile_set.tile_get_name(tile_index)
-	var door_tile = $Doors.tile_set.tile_get_name(1)
-	print(door_tile)
 	
 	if tile == "Light Gray Brick Floor.png 0":
 		laugh.play()
@@ -178,14 +176,35 @@ func detect():
 		Global.goto_scene("res://FindTheKey_Minigame1/FindTheKey.tscn")
 		hide_all()
 		#call_deferred("show_all")
-	elif door_tile == "MasterDoor.png 1":
-		if currentPlayer.key_found == true:
-			game_win()
-		else:
-			$CanvasLayer/Message.text = "Cannot Leave the Belladonna without a Key"
-			$CanvasLayer/Message.show()
-			yield(get_tree().create_timer(3.0), "timeout")
-			$CanvasLayer/Message.hide()
+	else:
+		var door_tile_coord = $Doors.world_to_map(currentPlayer.global_position)
+		var door_tile_index = $Doors.get_cellv(tile_coord)
+		var door_tile = $Doors.tile_set.tile_get_name(door_tile_index)
+		print(door_tile)
+		if door_tile == "Door2.png 0":
+			
+			if currentPlayer.small_key_found == true:
+				rng.randomize()
+				var win_random_number = rng.randi_range(0,5)
+				if win_random_number == 3:
+					currentPlayer.main_key_found = true
+				else:
+					currentPlayer.main_key_found = false
+				currentPlayer.small_key_found = false
+			else:
+				$CanvasLayer/Message.text = "You must beat a maze to get a small key"
+				$CanvasLayer/Message.show()
+				yield(get_tree().create_timer(3.0), "timeout")
+				$CanvasLayer/Message.hide()
+		elif door_tile == "MasterDoor.png 1":
+			if currentPlayer.main_key_found == true:
+				game_win()
+			else:
+				$CanvasLayer/Message.text = "Cannot Leave the Belladonna without a Key"
+				$CanvasLayer/Message.show()
+				yield(get_tree().create_timer(3.0), "timeout")
+				$CanvasLayer/Message.hide()
+			
 
 func select_random_map():
 	if currentPlayer.map1_found == true and currentPlayer.map2_found == true and currentPlayer.map3_found == true and currentPlayer.map4_found == true and currentPlayer.map5_found == true:
@@ -250,10 +269,14 @@ func select_random_map():
 
 func player_turn():
 	dice.visible = true
-	if currentPlayer.key_found == true:
+	if currentPlayer.small_key_found == true:
 		$CanvasLayer/KeyFound.visible = true
 	else:
 		$CanvasLayer/KeyFound.visible = false
+	if currentPlayer.main_key_found == true:
+		$CanvasLayer/MainKeyFound.visble = true
+	else:
+		$CanvasLayer/MainKeyFound.visible = false
 
 func _on_Button_pressed():
 	yield(get_tree().create_timer(2.0), "timeout")
