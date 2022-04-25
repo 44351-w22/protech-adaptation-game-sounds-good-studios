@@ -129,6 +129,7 @@ func detect():
 	var tile_index = $TileMap.get_cellv(tile_coord)
 	var tile = $TileMap.tile_set.tile_get_name(tile_index)
 	var door_tile = $Doors.tile_set.tile_get_name(1)
+	print(door_tile)
 	
 	if tile == "Light Gray Brick Floor.png 0":
 		laugh.play()
