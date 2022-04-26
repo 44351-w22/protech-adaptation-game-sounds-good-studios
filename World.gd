@@ -274,7 +274,7 @@ func player_turn():
 	else:
 		$CanvasLayer/KeyFound.visible = false
 	if currentPlayer.main_key_found == true:
-		$CanvasLayer/MainKeyFound.visble = true
+		$CanvasLayer/MainKeyFound.visible = true
 	else:
 		$CanvasLayer/MainKeyFound.visible = false
 
@@ -363,8 +363,7 @@ func start_game():
 func game_win():
 	$CanvasLayer/Message.text = "YOU WIN!!!"
 	$CanvasLayer/Message.show()
-	yield(get_tree().create_timer(3.0), "timeout")
-	$CanvasLayer/Message.hide()
+	$CanvasLayer/Restart.show()
 
 
 #UI Buttons
@@ -390,3 +389,7 @@ func _on_Resume_pressed():
 
 func _on_Quit_pressed():
 	get_tree().quit()
+
+
+func _on_Restart_pressed():
+	get_tree().reload_current_scene()
