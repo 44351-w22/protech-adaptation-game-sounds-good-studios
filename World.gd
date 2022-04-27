@@ -185,6 +185,7 @@ func detect():
 			
 			if currentPlayer.small_key_found == true:
 				rng.randomize()
+				currentPlayer.main_key_found = true
 				var win_random_number = rng.randi_range(0,5)
 				if win_random_number == 3:
 					currentPlayer.main_key_found = true
@@ -204,7 +205,7 @@ func detect():
 				$CanvasLayer/Message.show()
 				yield(get_tree().create_timer(3.0), "timeout")
 				$CanvasLayer/Message.hide()
-		elif door_tile == "MasterDoor.png 1":
+		else:
 			if currentPlayer.main_key_found == true:
 				game_win()
 			else:
@@ -400,4 +401,6 @@ func _on_Quit_pressed():
 
 
 func _on_Restart_pressed():
-	get_tree().reload_current_scene()
+	start_game()
+	$CanvasLayer/Message.hide()
+	$CanvasLayer/Restart.hide()
