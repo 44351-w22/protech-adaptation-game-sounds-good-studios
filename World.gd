@@ -188,8 +188,16 @@ func detect():
 				var win_random_number = rng.randi_range(0,5)
 				if win_random_number == 3:
 					currentPlayer.main_key_found = true
+					$CanvasLayer/Message.text = "You found the main key!!! \nNow Escape The Belladonna!!!"
+					$CanvasLayer/Message.show()
+					yield(get_tree().create_timer(3.0), "timeout")
+					$CanvasLayer/Message.hide()
 				else:
 					currentPlayer.main_key_found = false
+					$CanvasLayer/Message.text = "You did not find the main key. \nFind another small key and try again."
+					$CanvasLayer/Message.show()
+					yield(get_tree().create_timer(3.0), "timeout")
+					$CanvasLayer/Message.hide()
 				currentPlayer.small_key_found = false
 			else:
 				$CanvasLayer/Message.text = "You must beat a maze to get a small key"
