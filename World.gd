@@ -37,6 +37,14 @@ func _ready():
 	p2Sprite.texture = skins[1]
 	p3Sprite.texture = skins[2]
 	p4Sprite.texture = skins[4]
+	p1.main_key_found = false
+	p2.main_key_found = false
+	p3.main_key_found = false
+	p4.main_key_found = false
+	p1.small_key_found = false
+	p2.small_key_found = false
+	p3.small_key_found = false
+	p4.small_key_found = false
 	currentPlayer = p1
 
 func _physics_process(delta):
