@@ -150,7 +150,7 @@ func _on_Countdown_countdown_over():
 	queue_free()
 
 func _on_Resume_pressed():
-	$Pause.hide()
+	$CanvasLayer/Pause.hide()
 	get_tree().paused = false
 
 

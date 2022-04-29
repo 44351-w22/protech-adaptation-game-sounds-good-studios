@@ -73,6 +73,7 @@ stream = ExtResource( 11 )
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 8 )]
 
 [node name="Pause" parent="CanvasLayer" instance=ExtResource( 12 )]
+visible = false
 
 [connection signal="playerWins" from="Maze" to="." method="_on_Maze_playerWins"]
 [connection signal="playerWins" from="Maze2" to="." method="_on_Maze2_playerWins"]
