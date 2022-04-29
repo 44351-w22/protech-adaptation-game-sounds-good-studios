@@ -45,6 +45,8 @@ func _ready():
 	p2.small_key_found = false
 	p3.small_key_found = false
 	p4.small_key_found = false
+	$CanvasLayer/MainKeyFound.hide()
+	$CanvasLayer/KeyFound.hide()
 	currentPlayer = p1
 
 func _physics_process(delta):
@@ -208,6 +210,7 @@ func detect():
 					yield(get_tree().create_timer(3.0), "timeout")
 					$CanvasLayer/Message.hide()
 				currentPlayer.small_key_found = false
+				$CanvasLayer/KeyFound.hide()
 			else:
 				$CanvasLayer/Message.text = "You must beat a maze to get a small key"
 				$CanvasLayer/Message.show()
