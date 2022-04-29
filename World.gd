@@ -37,16 +37,6 @@ func _ready():
 	p2Sprite.texture = skins[1]
 	p3Sprite.texture = skins[2]
 	p4Sprite.texture = skins[4]
-	p1.main_key_found = false
-	p2.main_key_found = false
-	p3.main_key_found = false
-	p4.main_key_found = false
-	p1.small_key_found = false
-	p2.small_key_found = false
-	p3.small_key_found = false
-	p4.small_key_found = false
-	$CanvasLayer/MainKeyFound.hide()
-	$CanvasLayer/KeyFound.hide()
 	currentPlayer = p1
 
 func _physics_process(delta):
@@ -341,6 +331,7 @@ func hide_all():
 	$CanvasLayer/EndTurn.hide()
 	$CanvasLayer/MapsFound.hide()
 	$CanvasLayer/KeyFound.hide()
+	$CanvasLayer/MainKeyFound.hide()
 	$CanvasLayer/MovesLeft.hide()
 	playerLabel.hide()
 	$OutSideTileMap.hide()
@@ -374,6 +365,16 @@ func start_game():
 	p3.position.y = p3.start_Position_y
 	p4.position.x = p4.start_Position_x
 	p4.position.y = p4.start_Position_y
+	p1.main_key_found = false
+	p2.main_key_found = false
+	p3.main_key_found = false
+	p4.main_key_found = false
+	p1.small_key_found = false
+	p2.small_key_found = false
+	p3.small_key_found = false
+	p4.small_key_found = false
+	$CanvasLayer/MainKeyFound.hide()
+	$CanvasLayer/KeyFound.hide()
 	currentPlayer = p1
 	nextPlayer = p2
 	move_camera(p1)
@@ -384,6 +385,7 @@ func game_win():
 	$CanvasLayer/Message.text = "YOU WIN!!!"
 	$CanvasLayer/Message.show()
 	$CanvasLayer/Restart.show()
+	currentPlayer.main_key_found = false
 
 
 #UI Buttons
