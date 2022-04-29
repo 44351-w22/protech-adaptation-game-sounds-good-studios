@@ -68,25 +68,25 @@ stream = ExtResource( 10 )
 [node name="Defeat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 
-[node name="Pause" parent="." instance=ExtResource( 12 )]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 8 )]
+
+[node name="Pause" parent="CanvasLayer" instance=ExtResource( 12 )]
 
 [connection signal="playerWins" from="Maze" to="." method="_on_Maze_playerWins"]
 [connection signal="playerWins" from="Maze2" to="." method="_on_Maze2_playerWins"]
 [connection signal="playerWins" from="Maze3" to="." method="_on_Maze3_playerWins"]
 [connection signal="playerWins" from="Maze4" to="." method="_on_Maze4_playerWins"]
 [connection signal="playerWins" from="Maze5" to="." method="_on_Maze5_playerWins"]
-[connection signal="pressed" from="Pause/Resume" to="." method="_on_Resume_pressed"]
-[connection signal="pressed" from="Pause/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="countdown_over" from="CanvasLayer/UI" to="." method="_on_Countdown_countdown_over"]
+[connection signal="pressed" from="CanvasLayer/Pause/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/Quit" to="." method="_on_Quit_pressed"]
 
 [editable path="Maze"]
 [editable path="Maze2"]
 [editable path="Maze3"]
 [editable path="Maze4"]
 [editable path="Maze5"]
-[editable path="Pause"]
 [editable path="CanvasLayer/UI"]
+[editable path="CanvasLayer/Pause"]

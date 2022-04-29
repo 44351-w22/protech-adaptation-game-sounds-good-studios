@@ -59,7 +59,7 @@ func _ready():
 func _unhandled_input(event):
 	if(event.is_action_pressed("pause")):
 		get_tree().paused = true
-		$Pause.show()
+		$CanvasLayer/Pause.show()
 
 func _on_Maze_playerWins():
 	print("YOU WIN!!!")
