@@ -26,6 +26,9 @@ Golden tiles will trigger the Maze minigame, in which you navigate a maze to fin
 # Controls
 
 Roll Dice: Space Bar
+
 Move: WASD
+
 End Turn: E
+
 Pause: ESC
