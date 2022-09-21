@@ -1,6 +1,6 @@
 # Escape The Belladonna
 
-This game was made over the course of 4 months as a part of the Northwest Missouri State University Foundations of Game Development class. It was contributed to by Daniel Crowley, Jacob Daleske, and Turbo Mair.
+This game was made over the course of 4 months as a part of the Northwest Missouri State University Foundations of Game Development class. It was contributed to by Daniel Crowley, Jacob Daleske, Phillip Lyons, and Turbo Mair.
 
 Escape the Belladonna is an adaptation of a board game designed by the "Sapphire Serpents" of the protech writing class at Northwest. The goal of the game is simple: Be the first player out of 4 to escape.
 
